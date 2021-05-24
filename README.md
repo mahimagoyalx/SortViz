@@ -1,2 +1,2 @@
 # SortViz
-Sorting Visualizer made with Flutter
+A sorting visualizer mobile application made with Flutter
