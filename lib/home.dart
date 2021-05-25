@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:SortViz/components/cardView.dart';
+import 'package:sortviz/components/cardView.dart';
 import 'package:flutter/material.dart';
-import 'package:SortViz/components/barPainter.dart';
+import 'package:sortviz/components/barPainter.dart';
 
 class TestScreen extends StatefulWidget {
   TestScreen({Key key, this.title}) : super(key: key);
@@ -27,8 +27,8 @@ class _TestScreen extends State<TestScreen> {
 
   _makeColors() {
     colors[0] = Colors.pink;
-    colors[1] = Colors.blue;
-    colors[2] = Colors.teal;
+    colors[1] = Colors.teal;
+    colors[2] = Colors.blue;
   }
 
   _changeButtonColor() {
@@ -417,17 +417,24 @@ class _TestScreen extends State<TestScreen> {
                   }),
               Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height - 210, right: 320),
-                child: RaisedButton(
+                    top: MediaQuery.of(context).size.height - 190,
+                    right: MediaQuery.of(context).size.width - 100),
+                child: ElevatedButton(
                   onPressed: () {},
-                  color: Colors.white,
-                  padding: EdgeInsets.all(7),
-                  shape: CircleBorder(),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      elevation: 1,
+                      shape: CircleBorder(),
+                      padding: EdgeInsets.only(bottom: 16, right: 8),
+                      shadowColor: Colors.white),
+                  // color: Colors.white,
+                  // padding: EdgeInsets.all(7),
+                  // shape: CircleBorder(),
                   child: IconButton(
                     icon: Icon(
                       Icons.format_color_fill,
                       color: sortColor,
-                      size: 35,
+                      size: 30,
                     ),
                     onPressed: () => {
                       _changeButtonColor(),
@@ -452,9 +459,10 @@ class _TestScreen extends State<TestScreen> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width - 150,
                       height: 55,
-                      child: FlatButton(
-                        color: Colors.black,
-                        textColor: Colors.white,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          primary: Colors.white,
+                        ),
                         onPressed: () async {
                           switch (s) {
                             case 0:
@@ -490,9 +498,8 @@ class _TestScreen extends State<TestScreen> {
                     SizedBox(
                       width: 75,
                       height: 55,
-                      child: FlatButton(
-                        color: Colors.black,
-                        textColor: Colors.white,
+                      child: TextButton(
+                        style: TextButton.styleFrom(primary: Colors.white),
                         onPressed: randomise,
                         child: Icon(
                           Icons.shuffle,
@@ -503,9 +510,8 @@ class _TestScreen extends State<TestScreen> {
                     SizedBox(
                       width: 75,
                       height: 55,
-                      child: FlatButton(
-                        color: Colors.black,
-                        textColor: Colors.white,
+                      child: TextButton(
+                        style: TextButton.styleFrom(primary: Colors.white),
                         onPressed: () {
                           setState(() {
                             showModalBottomSheet(
@@ -514,13 +520,13 @@ class _TestScreen extends State<TestScreen> {
                                   return StatefulBuilder(
                                       builder: (context, setState) {
                                     return Container(
-                                      height: 368.0,
+                                      height: 315,
                                       child: ListView(
                                         padding: const EdgeInsets.all(4),
                                         children: <Widget>[
                                           CardView(
                                             Colors.blue,
-                                            160,
+                                            130,
                                             Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
@@ -535,7 +541,7 @@ class _TestScreen extends State<TestScreen> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  height: 7.0,
+                                                  height: 5.0,
                                                 ),
                                                 Row(
                                                   crossAxisAlignment:
@@ -594,7 +600,7 @@ class _TestScreen extends State<TestScreen> {
                                           ),
                                           CardView(
                                             Colors.blue,
-                                            160,
+                                            130,
                                             Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
@@ -609,7 +615,7 @@ class _TestScreen extends State<TestScreen> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  height: 7,
+                                                  height: 5,
                                                 ),
                                                 Row(
                                                   crossAxisAlignment:
