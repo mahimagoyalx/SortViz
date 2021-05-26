@@ -1,6 +1,6 @@
 ## SortViz
 
-- A flutter project that helps you visualise various sorting algorithms.
+A flutter project that helps you visualise various sorting algorithms.
 
 ### Description
 
