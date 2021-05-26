@@ -25,5 +25,3 @@ A sorting visualizer that visualises different sorting algorithms on an array of
  - Control the duration of sorting
  - Randomize the array
  - Change the color of bar graph
-
-### Screenshots
