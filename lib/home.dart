@@ -18,8 +18,8 @@ class _TestScreen extends State<TestScreen> {
   List<Color> colors = List.generate(3, (index) => null);
 
   int s = 0;
-  int arraysize = 400;
-  var duration = 3000;
+  int arraysize = 200;
+  var duration = 500;
   String dropdownValue = "Merge Sort";
   List<int> nums = [];
   StreamController<List<int>> _streamController;
@@ -425,7 +425,7 @@ class _TestScreen extends State<TestScreen> {
                       primary: Colors.white,
                       elevation: 3,
                       shape: CircleBorder(),
-                      padding: EdgeInsets.only(bottom: 16, right: 8),
+                      padding: EdgeInsets.only(bottom: 16, right: 11),
                       shadowColor: Colors.black),
                   // color: Colors.white,
                   // padding: EdgeInsets.all(7),
@@ -636,7 +636,7 @@ class _TestScreen extends State<TestScreen> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      " ms",
+                                                      " µs",
                                                       style: TextStyle(
                                                         fontSize: 25.0,
                                                         color: Colors.white,
