@@ -1,8 +1,8 @@
-# SortViz
+## SortViz
 
 - A flutter project that helps you visualise various sorting algorithms.
 
-## Description
+### Description
 
 A sorting visualizer that visualises different sorting algorithms on an array of bar graph, as the human brain learns better from visuals, so a person by simply observing the pattern can differentiate between them.
 
@@ -14,7 +14,7 @@ This app runs both as web and mobile application.
 
 Tech Stack: Flutter, Dart
 
-## Sorting Algorithms visualized:
+### Sorting Algorithms visualized:
  - Merge Sort
  - Quick Sort
  - Selection Sort
@@ -22,10 +22,10 @@ Tech Stack: Flutter, Dart
  - Insertion Sort
  - Heap Sort
 
-## Features
+### Features
  - Change the size of the array
  - Control the duration of sorting
  - Randomize the array
  - Change the color of bar graph
 
-## Screenshots
+### Screenshots
