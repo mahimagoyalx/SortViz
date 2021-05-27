@@ -12,13 +12,23 @@ class SortingService {
     randomise();
   }
 
-  final int _size;
-  final int _duration;
+  int _size;
+  int _duration;
   final List<int> arr = [];
   final StreamController<List<int>> _streamController =
       StreamController<List<int>>();
 
   int get size => _size;
+
+  set size(int value) {
+    _size = value;
+  }
+
+  int get duration => _duration;
+
+  set duration(int value) {
+    _duration = value;
+  }
 
   Stream<List<int>> get stream => _streamController.stream;
 

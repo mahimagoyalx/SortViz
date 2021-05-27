@@ -18,18 +18,16 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Color> colors = List.generate(3, (index) => null);
   SortingService sortingService;
   int s = 0;
-  int size = 200;
   var duration = 500;
   String dropdownValue = "Merge Sort";
-  List<int> nums = [];
   Stream<List<int>> stream;
 
   @override
   void initState() {
     super.initState();
     sortingService = SortingService(
-      size: size,
-      microsecondDuration: duration,
+      size: 200,
+      microsecondDuration: 500,
     );
 
     stream = sortingService.stream;
@@ -201,7 +199,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       return CustomPaint(
                         painter: ArrayBar(
                           sortColor: sortColor,
-                          width: MediaQuery.of(context).size.width / size,
+                          width: MediaQuery.of(context).size.width /
+                              sortingService.size,
                           height: number,
                           index: ind,
                         ),
@@ -262,10 +261,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () async {
                         switch (s) {
                           case 0:
-                            await sortingService.mergeSort(0, size - 1);
+                            await sortingService.mergeSort(
+                                0, sortingService.size - 1);
                             break;
                           case 1:
-                            await sortingService.quickSort(0, size - 1);
+                            await sortingService.quickSort(
+                                0, sortingService.size - 1);
                             break;
                           case 2:
                             sortingService.selectionSort();
@@ -350,7 +351,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       MainAxisAlignment.center,
                                                   children: <Widget>[
                                                     Text(
-                                                      size.toString(),
+                                                      sortingService.size
+                                                          .toString(),
                                                       style: TextStyle(
                                                         fontSize: 24.0,
                                                         fontWeight:
@@ -381,11 +383,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   child: Slider(
                                                     max: 500,
                                                     min: 5,
-                                                    value: size.toDouble(),
+                                                    value: sortingService.size
+                                                        .toDouble(),
                                                     inactiveColor: Colors.white,
                                                     onChanged: (double value) {
                                                       setState(() {
-                                                        size = value.round();
+                                                        sortingService.size =
+                                                            value.round();
                                                         sortingService
                                                             .randomise();
                                                       });
