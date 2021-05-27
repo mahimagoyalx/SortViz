@@ -25,6 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
   StreamController<List<int>> _streamController;
   Stream<List<int>> _stream;
 
+  @override
+  void initState() {
+    super.initState();
+    _makeColors();
+    _streamController = StreamController<List<int>>();
+    _stream = _streamController.stream;
+    randomise();
+  }
+
   _makeColors() {
     colors[0] = Colors.pink;
     colors[1] = Colors.teal;
@@ -286,15 +295,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _makeColors();
-    _streamController = StreamController<List<int>>();
-    _stream = _streamController.stream;
-    randomise();
-  }
-
-  @override
   Widget build(BuildContext context) {
     String title;
     switch (s) {
@@ -317,209 +317,209 @@ class _HomeScreenState extends State<HomeScreen> {
         title = "Heap Sort";
     }
     return Scaffold(
-        appBar: AppBar(
-          elevation: 4,
-          backgroundColor: Colors.black,
-          title: Text(
-            "Sorting Visualiser",
-            style: TextStyle(
-              fontSize: 19.0,
-            ),
+      appBar: AppBar(
+        elevation: 4,
+        backgroundColor: Colors.black,
+        title: Text(
+          "Sorting Visualiser",
+          style: TextStyle(
+            fontSize: 19.0,
           ),
-          actions: <Widget>[
-            new DropdownButtonHideUnderline(
-              child: DropdownButton(
-                icon: Icon(
-                  Icons.more_vert,
-                  color: Colors.white,
-                ),
-                iconSize: 24,
-                onChanged: (String newValue) {
-                  setState(() {
-                    switch (newValue) {
-                      case 'Merge Sort':
-                        setState(() {
-                          s = 0;
-                        });
-                        break;
-                      case 'Quick Sort':
-                        setState(() {
-                          s = 1;
-                          print(s);
-                        });
-                        break;
-                      case 'Selection Sort':
-                        setState(() {
-                          s = 2;
-                          print(s);
-                        });
-                        break;
-                      case 'Bubble Sort':
-                        setState(() {
-                          s = 3;
-                          print(s);
-                        });
-                        break;
-                      case 'Insertion Sort':
-                        setState(() {
-                          s = 4;
-                          print(s);
-                        });
-                        break;
-                      case 'Heap Sort':
-                        setState(() {
-                          s = 5;
-                          print(s);
-                        });
-                        break;
-                    }
-                    dropdownValue = newValue;
-                  });
-                },
-                items: <String>[
-                  'Merge Sort',
-                  'Quick Sort',
-                  'Selection Sort',
-                  'Bubble Sort',
-                  'Insertion Sort',
-                  'Heap Sort'
-                ].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+        ),
+        actions: <Widget>[
+          new DropdownButtonHideUnderline(
+            child: DropdownButton(
+              icon: Icon(
+                Icons.more_vert,
+                color: Colors.white,
               ),
-            )
+              iconSize: 24,
+              onChanged: (String newValue) {
+                setState(() {
+                  switch (newValue) {
+                    case 'Merge Sort':
+                      setState(() {
+                        s = 0;
+                      });
+                      break;
+                    case 'Quick Sort':
+                      setState(() {
+                        s = 1;
+                        print(s);
+                      });
+                      break;
+                    case 'Selection Sort':
+                      setState(() {
+                        s = 2;
+                        print(s);
+                      });
+                      break;
+                    case 'Bubble Sort':
+                      setState(() {
+                        s = 3;
+                        print(s);
+                      });
+                      break;
+                    case 'Insertion Sort':
+                      setState(() {
+                        s = 4;
+                        print(s);
+                      });
+                      break;
+                    case 'Heap Sort':
+                      setState(() {
+                        s = 5;
+                        print(s);
+                      });
+                      break;
+                  }
+                  dropdownValue = newValue;
+                });
+              },
+              items: <String>[
+                'Merge Sort',
+                'Quick Sort',
+                'Selection Sort',
+                'Bubble Sort',
+                'Insertion Sort',
+                'Heap Sort'
+              ].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+          )
+        ],
+      ),
+      body: Container(
+        padding: EdgeInsets.all(0),
+        child: Column(
+          children: [
+            StreamBuilder<Object>(
+                stream: _stream,
+                builder: (context, snapshot) {
+                  int ind = 0;
+                  return Row(
+                    children: nums.map((int number) {
+                      ind++;
+                      return CustomPaint(
+                        painter: ArrayBar(
+                          sortColor: sortColor,
+                          width: MediaQuery.of(context).size.width / arraysize,
+                          height: number,
+                          index: ind,
+                        ),
+                      );
+                    }).toList(),
+                  );
+                }),
+            Padding(
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height - 190,
+                  right: MediaQuery.of(context).size.width - 100),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    elevation: 3,
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.only(bottom: 16, right: 11),
+                    shadowColor: Colors.black),
+                // color: Colors.white,
+                // padding: EdgeInsets.all(7),
+                // shape: CircleBorder(),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.format_color_fill,
+                    color: sortColor,
+                    size: 30,
+                  ),
+                  onPressed: () => {
+                    _changeButtonColor(),
+                    setState(() {}),
+                  },
+                ),
+              ),
+            ),
           ],
         ),
-        body: Container(
-          padding: EdgeInsets.all(0),
-          child: Column(
-            children: [
-              StreamBuilder<Object>(
-                  stream: _stream,
-                  builder: (context, snapshot) {
-                    int ind = 0;
-                    return Row(
-                      children: nums.map((int number) {
-                        ind++;
-                        return CustomPaint(
-                          painter: ArrayBar(
-                            sortColor: sortColor,
-                            width:
-                                MediaQuery.of(context).size.width / arraysize,
-                            height: number,
-                            index: ind,
-                          ),
-                        );
-                      }).toList(),
-                    );
-                  }),
-              Padding(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height - 190,
-                    right: MediaQuery.of(context).size.width - 100),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      elevation: 3,
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.only(bottom: 16, right: 11),
-                      shadowColor: Colors.black),
-                  // color: Colors.white,
-                  // padding: EdgeInsets.all(7),
-                  // shape: CircleBorder(),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.format_color_fill,
-                      color: sortColor,
-                      size: 30,
+      ),
+      bottomNavigationBar: Row(
+        children: <Widget>[
+          Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            child: BottomAppBar(
+              color: Colors.black,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width - 150,
+                    height: 55,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        primary: Colors.white,
+                      ),
+                      onPressed: () async {
+                        switch (s) {
+                          case 0:
+                            await mergeSort(0, arraysize - 1);
+                            break;
+                          case 1:
+                            await quickSort(0, arraysize - 1);
+                            break;
+                          case 2:
+                            selectionSort();
+                            break;
+                          case 3:
+                            bubblesort();
+                            break;
+                          case 4:
+                            insertionSort();
+                            break;
+                          case 5:
+                            await heapSort();
+                            break;
+                        }
+                      },
+                      child: Text(
+                        title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
-                    onPressed: () => {
-                      _changeButtonColor(),
-                      setState(() {}),
-                    },
                   ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: Row(
-          children: <Widget>[
-            Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              child: BottomAppBar(
-                color: Colors.black,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width - 150,
-                      height: 55,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          primary: Colors.white,
-                        ),
-                        onPressed: () async {
-                          switch (s) {
-                            case 0:
-                              await mergeSort(0, arraysize - 1);
-                              break;
-                            case 1:
-                              await quickSort(0, arraysize - 1);
-                              break;
-                            case 2:
-                              selectionSort();
-                              break;
-                            case 3:
-                              bubblesort();
-                              break;
-                            case 4:
-                              insertionSort();
-                              break;
-                            case 5:
-                              await heapSort();
-                              break;
-                          }
-                        },
-                        child: Text(
-                          title,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                  SizedBox(
+                    width: 75,
+                    height: 55,
+                    child: TextButton(
+                      style: TextButton.styleFrom(primary: Colors.white),
+                      onPressed: randomise,
+                      child: Icon(
+                        Icons.shuffle,
+                        size: 24,
                       ),
                     ),
-                    SizedBox(
-                      width: 75,
-                      height: 55,
-                      child: TextButton(
-                        style: TextButton.styleFrom(primary: Colors.white),
-                        onPressed: randomise,
-                        child: Icon(
-                          Icons.shuffle,
-                          size: 24,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 75,
-                      height: 55,
-                      child: TextButton(
-                        style: TextButton.styleFrom(primary: Colors.white),
-                        onPressed: () {
-                          setState(() {
+                  ),
+                  SizedBox(
+                    width: 75,
+                    height: 55,
+                    child: TextButton(
+                      style: TextButton.styleFrom(primary: Colors.white),
+                      onPressed: () {
+                        setState(
+                          () {
                             showModalBottomSheet(
-                                context: context,
-                                builder: (builder) {
-                                  return StatefulBuilder(
-                                      builder: (context, setState) {
+                              context: context,
+                              builder: (builder) {
+                                return StatefulBuilder(
+                                  builder: (context, setState) {
                                     return Container(
                                       height: 315,
                                       child: ListView(
@@ -684,21 +684,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ),
                                     );
-                                  });
-                                });
-                          });
-                        },
-                        child: Icon(
-                          Icons.settings,
-                          size: 24,
-                        ),
+                                  },
+                                );
+                              },
+                            );
+                          },
+                        );
+                      },
+                      child: Icon(
+                        Icons.settings,
+                        size: 24,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
