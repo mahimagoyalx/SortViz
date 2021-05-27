@@ -18,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Color> colors = List.generate(3, (index) => null);
   SortingService sortingService;
   int s = 0;
-  var duration = 500;
   String dropdownValue = "Merge Sort";
   Stream<List<int>> stream;
 
@@ -428,7 +427,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       MainAxisAlignment.center,
                                                   children: <Widget>[
                                                     Text(
-                                                      duration.toString(),
+                                                      sortingService.duration
+                                                          .toString(),
                                                       style: TextStyle(
                                                         fontSize: 24.0,
                                                         fontWeight:
@@ -468,11 +468,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   child: Slider(
                                                     max: 5000,
                                                     min: 1,
-                                                    value: duration.toDouble(),
+                                                    value: sortingService
+                                                        .duration
+                                                        .toDouble(),
                                                     inactiveColor: Colors.white,
                                                     onChanged: (double value) {
                                                       setState(() {
-                                                        duration =
+                                                        sortingService
+                                                                .duration =
                                                             value.round();
                                                       });
                                                     },
