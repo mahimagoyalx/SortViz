@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
       title: 'Sorting Visualiser',
       theme: ThemeData(
         fontFamily: 'Lato',
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.grey.shade800,
+        bottomAppBarColor: Colors.grey.shade800,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomeScreen(),

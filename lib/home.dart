@@ -15,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Color sortColor = Colors.blue;
   int c = 0;
-  List<Color> colors = List.generate(3, (index) => null);
+  List<Color> colors;
   SortingService sortingService;
   int s = 0;
   String dropdownValue = "Merge Sort";
@@ -30,56 +30,18 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     stream = sortingService.stream;
-    _makeColors();
+    colors = [Colors.pink, Colors.teal, Colors.blue];
   }
 
-  _makeColors() {
-    colors[0] = Colors.pink;
-    colors[1] = Colors.teal;
-    colors[2] = Colors.blue;
+  @override
+  void dispose() {
+    sortingService.dispose();
+    super.dispose();
   }
 
   _changeButtonColor() {
     if (c == 3) c = 0;
     sortColor = colors[c++];
-  }
-
-  void handleClick(String value) {
-    switch (value) {
-      case 'Merge Sort':
-        setState(() {
-          s = 0;
-        });
-        break;
-
-      case 'Quick Sort':
-        setState(() {
-          s = 1;
-          print(s);
-        });
-        break;
-
-      case 'Selection Sort':
-        setState(() {
-          s = 2;
-          print(s);
-        });
-        break;
-
-      case 'Bubble Sort':
-        setState(() {
-          s = 3;
-          print(s);
-        });
-        break;
-
-      case 'Insertion Sort':
-        setState(() {
-          s = 4;
-          print(s);
-        });
-        break;
-    }
   }
 
   @override
@@ -104,10 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
       case 5:
         title = "Heap Sort";
     }
+
     return Scaffold(
       appBar: AppBar(
         elevation: 4,
-        backgroundColor: Colors.black,
         title: Text(
           "Sorting Visualiser",
           style: TextStyle(
@@ -115,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         actions: <Widget>[
-          new DropdownButtonHideUnderline(
+          DropdownButtonHideUnderline(
             child: DropdownButton(
               icon: Icon(
                 Icons.more_vert,
@@ -216,14 +178,12 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    elevation: 3,
-                    shape: CircleBorder(),
-                    padding: EdgeInsets.only(bottom: 16, right: 11),
-                    shadowColor: Colors.black),
-                // color: Colors.white,
-                // padding: EdgeInsets.all(7),
-                // shape: CircleBorder(),
+                  primary: Colors.white,
+                  elevation: 3,
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.only(bottom: 16, right: 11),
+                  shadowColor: Colors.black,
+                ),
                 child: IconButton(
                   icon: Icon(
                     Icons.format_color_fill,
@@ -246,7 +206,6 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 50,
             width: MediaQuery.of(context).size.width,
             child: BottomAppBar(
-              color: Colors.black,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
