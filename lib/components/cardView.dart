@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class CardView extends StatelessWidget {
   CardView(this.colors, this.height, this.cardChild);
+
   final Color colors;
   final Widget cardChild;
   final double height;
+
   @override
   Widget build(BuildContext context) {
     return Container(

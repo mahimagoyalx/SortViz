@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:sortviz/components/cardView.dart';
+
 import 'package:flutter/material.dart';
 import 'package:sortviz/components/barPainter.dart';
+import 'package:sortviz/components/cardView.dart';
 
-class TestScreen extends StatefulWidget {
-  TestScreen({Key key, this.title}) : super(key: key);
-  final String title;
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
 
   @override
-  _TestScreen createState() => _TestScreen();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _TestScreen extends State<TestScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   Color sortColor = Colors.blue;
   int c = 0;
   List<Color> colors = List.generate(3, (index) => null);
@@ -75,6 +75,7 @@ class _TestScreen extends State<TestScreen> {
   }
 
   menu() {}
+
   randomise() {
     nums.clear();
     for (int i = 0; i < arraysize; i++) {
