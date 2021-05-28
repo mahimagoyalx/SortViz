@@ -67,7 +67,28 @@ class _HomeScreenState extends State<HomeScreen> {
         title = "Heap Sort";
     }
 
+    Widget changeColorButton() => Material(
+          elevation: 3,
+          color: Colors.white,
+          shape: CircleBorder(),
+          shadowColor: Colors.black,
+          child: IconButton(
+            onPressed: () => {
+              _changeButtonColor(),
+              setState(() {}),
+            },
+            splashColor: Colors.transparent,
+            icon: Icon(
+              Icons.format_color_fill,
+              color: sortColor,
+              size: 30,
+            ),
+          ),
+        );
+
     return Scaffold(
+      floatingActionButton: changeColorButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       appBar: AppBar(
         elevation: 4,
         title: Text(
@@ -170,32 +191,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ).toList(),
                 );
               },
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height - 190,
-                  right: MediaQuery.of(context).size.width - 100),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  elevation: 3,
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.only(bottom: 16, right: 11),
-                  shadowColor: Colors.black,
-                ),
-                child: IconButton(
-                  icon: Icon(
-                    Icons.format_color_fill,
-                    color: sortColor,
-                    size: 30,
-                  ),
-                  onPressed: () => {
-                    _changeButtonColor(),
-                    setState(() {}),
-                  },
-                ),
-              ),
             ),
           ],
         ),
