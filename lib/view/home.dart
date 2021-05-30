@@ -98,33 +98,27 @@ class _HomeScreenState extends State<HomeScreen> {
       showModalBottomSheet(
         context: context,
         builder: (context) {
-          return StatefulBuilder(builder: (context, setState) {
-            return Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: arraySizeSlider(
-                      onArraySizeChanged: (double value) {
-                        setState(() {
-                          sortingService.size = value.round();
-                        });
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: durationSlider(
-                      onDurationChange: (double value) {
-                        setState(() {
-                          sortingService.duration = value.round();
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            );
-          });
+          return Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                arraySizeSlider(
+                  onArraySizeChanged: (double value) {
+                    setState(() {
+                      sortingService.size = value.round();
+                    });
+                  },
+                ),
+                durationSlider(
+                  onDurationChange: (double value) {
+                    setState(() {
+                      sortingService.duration = value.round();
+                    });
+                  },
+                ),
+              ],
+            ),
+          );
         },
       );
     }
@@ -145,22 +139,27 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    Widget shuffleButton = IconButton(
+    Widget iconButton(
+            {@required VoidCallback onPressed, @required IconData icon}) =>
+        Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: IconButton(
+              onPressed: onPressed,
+              icon: Icon(
+                icon,
+                size: 24,
+                color: Colors.white,
+              ),
+            ));
+
+    Widget shuffleButton = iconButton(
       onPressed: sortingService.shuffle,
-      icon: Icon(
-        Icons.shuffle,
-        size: 24,
-        color: Colors.white,
-      ),
+      icon: Icons.shuffle,
     );
 
-    Widget settingsButton = IconButton(
+    Widget settingsButton = iconButton(
       onPressed: showSettings,
-      icon: Icon(
-        Icons.settings,
-        size: 24,
-        color: Colors.white,
-      ),
+      icon: Icons.settings,
     );
 
     return Material(
@@ -211,14 +210,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: sortButton,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: shuffleButton,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: settingsButton,
-                    ),
+                    shuffleButton,
+                    settingsButton,
                   ],
                 ),
               ),
