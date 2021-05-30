@@ -26,9 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Widget changeColorButton = FloatingActionButton(
-      onPressed: () => setState(() {
-        sortColor = colors[c++ % 3];
-      }),
+      // Intentionally disabling it, makes sense right?
+      onPressed: () => sortingService.pause
+          ? setState(() {
+              sortColor = colors[c++ % 3];
+            })
+          : null,
       backgroundColor: Colors.white,
       child: Icon(
         Icons.format_color_fill,
@@ -142,15 +145,16 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget iconButton(
             {@required VoidCallback onPressed, @required IconData icon}) =>
         Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: IconButton(
-              onPressed: onPressed,
-              icon: Icon(
-                icon,
-                size: 24,
-                color: Colors.white,
-              ),
-            ));
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              icon,
+              size: 24,
+              color: Colors.white,
+            ),
+          ),
+        );
 
     Widget shuffleButton = iconButton(
       onPressed: sortingService.shuffle,

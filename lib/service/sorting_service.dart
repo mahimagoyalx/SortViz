@@ -33,6 +33,8 @@ class SortingService {
 
   Stream<List<int>> get stream => _streamController.stream;
 
+  bool get pause => _pause;
+
   set size(int size) {
     this._size = size;
     shuffle();
