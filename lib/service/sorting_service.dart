@@ -65,6 +65,29 @@ class SortingService {
     _streamController.add(arr);
   }
 
+  void sort(Sort sort) {
+    switch (sort) {
+      case Sort.MERGE_SORT:
+        mergeSort(0, _size - 1);
+        break;
+      case Sort.QUICK_SORT:
+        quickSort(0, _size - 1);
+        break;
+      case Sort.SELECTION_SORT:
+        selectionSort();
+        break;
+      case Sort.BUBBLE_SORT:
+        bubbleSort();
+        break;
+      case Sort.INSERTION_SORT:
+        insertionSort();
+        break;
+      case Sort.HEAP_SORT:
+        heapSort();
+        break;
+    }
+  }
+
   // Sorting Algorithms
 
   // Bubble Sort
