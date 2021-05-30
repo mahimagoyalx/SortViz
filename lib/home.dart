@@ -13,16 +13,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Color sortColor = Colors.blue;
   int c = 0;
-  List<Color> colors;
+  List<Color> colors = [Colors.pink, Colors.teal, Colors.blue];
   SortingService sortingService = SortingService();
-  int s = 0;
   Sort sortingType = Sort.MERGE_SORT;
-
-  @override
-  void initState() {
-    super.initState();
-    colors = [Colors.pink, Colors.teal, Colors.blue];
-  }
 
   @override
   void dispose() {
