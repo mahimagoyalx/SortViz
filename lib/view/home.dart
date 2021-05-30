@@ -85,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
           max: 1000,
           min: 2,
           onChanged: onArraySizeChanged,
+          backgroundColor: sortColor,
         );
 
     Widget durationSlider({@required ValueChanged<double> onDurationChange}) =>
@@ -95,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
           max: 5000,
           min: 1,
           onChanged: onDurationChange,
+          backgroundColor: sortColor,
         );
 
     void showSettings() {

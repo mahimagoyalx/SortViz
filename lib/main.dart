@@ -15,6 +15,13 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.grey.shade800,
         bottomAppBarColor: Colors.grey.shade800,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        sliderTheme: SliderTheme.of(context).copyWith(
+          activeTrackColor: Colors.black,
+          thumbColor: Color(0xFFEB1555),
+          overlayColor: Color(0x29EB1555),
+          overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
+          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
+        ),
       ),
       home: HomeScreen(),
     );

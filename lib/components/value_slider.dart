@@ -7,6 +7,7 @@ class ValueSlider extends StatelessWidget {
   final double _max;
   final double _min;
   final ValueChanged<double> _onChanged;
+  final Color _backgroundColor;
 
   const ValueSlider({
     @required String title,
@@ -15,18 +16,22 @@ class ValueSlider extends StatelessWidget {
     @required double max,
     @required double min,
     @required ValueChanged<double> onChanged,
+    @required Color backgroundColor,
     Key key,
-  })  : this._title = title,
+  })
+      : this._title = title,
         this._param = param,
         this._value = value,
         this._max = max,
         this._min = min,
         this._onChanged = onChanged,
+        this._backgroundColor = backgroundColor,
         assert(title != null),
         assert(value != null),
         assert(max != null),
         assert(min != null),
         assert(onChanged != null),
+        assert(backgroundColor != null),
         super(key: key);
 
   @override
@@ -35,7 +40,7 @@ class ValueSlider extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Material(
-          color: Theme.of(context).accentColor,
+          color: _backgroundColor,
           borderRadius: BorderRadius.circular(8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -72,21 +77,12 @@ class ValueSlider extends StatelessWidget {
                       : Container(),
                 ],
               ),
-              SliderTheme(
-                data: SliderTheme.of(context).copyWith(
-                  activeTrackColor: Colors.black,
-                  thumbColor: Color(0xFFEB1555),
-                  overlayColor: Color(0x29EB1555),
-                  overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
-                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
-                ),
-                child: Slider(
-                  max: _max,
-                  min: _min,
-                  value: _value,
-                  inactiveColor: Colors.white,
-                  onChanged: _onChanged,
-                ),
+              Slider(
+                max: _max,
+                min: _min,
+                value: _value,
+                inactiveColor: Colors.white,
+                onChanged: _onChanged,
               )
             ],
           ),
