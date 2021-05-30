@@ -18,8 +18,7 @@ class ValueSlider extends StatelessWidget {
     @required ValueChanged<double> onChanged,
     @required Color backgroundColor,
     Key key,
-  })
-      : this._title = title,
+  })  : this._title = title,
         this._param = param,
         this._value = value,
         this._max = max,
