@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:meta/meta.dart';
-
 enum Sort {
   MERGE_SORT,
   QUICK_SORT,
@@ -25,33 +23,26 @@ extension SortExtension on Sort {
 }
 
 class SortingService {
-  SortingService({@required int size, @required int microsecondDuration})
-      : this._size = size,
-        this._duration = microsecondDuration,
-        assert(size != null),
-        assert(microsecondDuration != null) {
-    randomise();
-  }
-
-  int _size;
-  int _duration;
+  int _size = 5;
+  int _height;
+  int duration = 500;
   final List<int> arr = [];
   final StreamController<List<int>> _streamController =
       StreamController<List<int>>();
 
+  Stream<List<int>> get stream => _streamController.stream;
+
+  set size(int size) {
+    this._size = size;
+    randomise();
+  }
+
   int get size => _size;
 
-  set size(int value) {
-    _size = value;
+  set height(int height) {
+    this._height = height;
+    randomise();
   }
-
-  int get duration => _duration;
-
-  set duration(int value) {
-    _duration = value;
-  }
-
-  Stream<List<int>> get stream => _streamController.stream;
 
   void dispose() {
     _streamController.close();
@@ -60,7 +51,7 @@ class SortingService {
   randomise() {
     arr.clear();
     for (int i = 0; i < _size; i++) {
-      arr.add(Random().nextInt(490) + 10);
+      arr.add(Random().nextInt(_height - 40) + 20);
     }
     _streamController.add(arr);
   }
@@ -99,7 +90,7 @@ class SortingService {
           arr[j] = arr[j + 1];
           arr[j + 1] = temp;
         }
-        await Future.delayed(Duration(microseconds: _duration));
+        await Future.delayed(Duration(microseconds: duration));
         _streamController.add(arr);
       }
     }
@@ -114,7 +105,7 @@ class SortingService {
           arr[j] = arr[i];
           arr[i] = temp;
         }
-        await Future.delayed(Duration(microseconds: _duration));
+        await Future.delayed(Duration(microseconds: duration));
         _streamController.add(arr);
       }
     }
@@ -128,11 +119,11 @@ class SortingService {
       while (j >= 0 && temp < arr[j]) {
         arr[j + 1] = arr[j];
         --j;
-        await Future.delayed(Duration(microseconds: _duration));
+        await Future.delayed(Duration(microseconds: duration));
         _streamController.add(arr);
       }
       arr[j + 1] = temp;
-      await Future.delayed(Duration(microseconds: _duration));
+      await Future.delayed(Duration(microseconds: duration));
       _streamController.add(arr);
     }
   }
@@ -161,7 +152,7 @@ class SortingService {
           arr[k] = rightList[j];
           j++;
         }
-        await Future.delayed(Duration(microseconds: _duration));
+        await Future.delayed(Duration(microseconds: duration));
         _streamController.add(arr);
         k++;
       }
@@ -171,7 +162,7 @@ class SortingService {
         i++;
         k++;
 
-        await Future.delayed(Duration(microseconds: _duration));
+        await Future.delayed(Duration(microseconds: duration));
         _streamController.add(arr);
       }
 
@@ -180,7 +171,7 @@ class SortingService {
         j++;
         k++;
 
-        await Future.delayed(Duration(microseconds: _duration));
+        await Future.delayed(Duration(microseconds: duration));
         _streamController.add(arr);
       }
     }
@@ -191,7 +182,7 @@ class SortingService {
       await mergeSort(leftIndex, middleIndex);
       await mergeSort(middleIndex + 1, rightIndex);
 
-      await Future.delayed(Duration(microseconds: _duration));
+      await Future.delayed(Duration(microseconds: duration));
 
       _streamController.add(arr);
 
@@ -207,7 +198,7 @@ class SortingService {
       var temp = arr[p];
       arr[p] = arr[right];
       arr[right] = temp;
-      await Future.delayed(Duration(microseconds: _duration));
+      await Future.delayed(Duration(microseconds: duration));
 
       _streamController.add(arr);
 
@@ -220,7 +211,7 @@ class SortingService {
           arr[cursor] = temp;
           cursor++;
 
-          await Future.delayed(Duration(microseconds: _duration));
+          await Future.delayed(Duration(microseconds: duration));
 
           _streamController.add(arr);
         }
@@ -230,7 +221,7 @@ class SortingService {
       arr[right] = arr[cursor];
       arr[cursor] = temp;
 
-      await Future.delayed(Duration(microseconds: _duration));
+      await Future.delayed(Duration(microseconds: duration));
 
       _streamController.add(arr);
 
@@ -286,6 +277,6 @@ class SortingService {
       arr[largest] = temp;
       heapify(arr, n, largest);
     }
-    await Future.delayed(Duration(microseconds: _duration));
+    await Future.delayed(Duration(microseconds: duration));
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:sortviz/components/bar.dart';
 import 'package:sortviz/components/value_slider.dart';
@@ -16,20 +14,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Color sortColor = Colors.blue;
   int c = 0;
   List<Color> colors;
-  SortingService sortingService;
+  SortingService sortingService = SortingService();
   int s = 0;
   Sort sortingType = Sort.MERGE_SORT;
-  Stream<List<int>> stream;
 
   @override
   void initState() {
     super.initState();
-    sortingService = SortingService(
-      size: 5,
-      microsecondDuration: 500,
-    );
-
-    stream = sortingService.stream;
     colors = [Colors.pink, Colors.teal, Colors.blue];
   }
 
@@ -124,7 +115,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       onArraySizeChanged: (double value) {
                         setState(() {
                           sortingService.size = value.round();
-                          sortingService.randomise();
                         });
                       },
                     ),
@@ -188,21 +178,26 @@ class _HomeScreenState extends State<HomeScreen> {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.startFloat,
             appBar: appBar,
-            body: StreamBuilder<List<int>>(
-              stream: stream,
-              builder: (context, snapshot) {
-                List<int> arr = snapshot.data;
+            body: LayoutBuilder(
+              builder: (context, constrains) {
+                sortingService.height = constrains.biggest.height.toInt();
 
-                return LayoutBuilder(
-                  builder: (context, constrains) {
-                    double width =
+                return StreamBuilder<List<int>>(
+                  stream: sortingService.stream,
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Container();
+                    }
+
+                    List<int> arr = snapshot.data;
+                    double barWidth =
                         constrains.biggest.width / sortingService.size;
                     List<Widget> bars = List.generate(
                       sortingService.size,
                       (index) => Bar(
                         index: index,
                         height: arr[index],
-                        width: width,
+                        width: barWidth,
                         color: sortColor,
                       ),
                     ).toList();
