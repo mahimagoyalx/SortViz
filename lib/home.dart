@@ -67,27 +67,18 @@ class _HomeScreenState extends State<HomeScreen> {
         title = "Heap Sort";
     }
 
-    Widget changeColorButton() => Material(
-          elevation: 3,
-          color: Colors.white,
-          shape: CircleBorder(),
-          shadowColor: Colors.black,
-          child: IconButton(
-            onPressed: () => {
-              _changeButtonColor(),
-              setState(() {}),
-            },
-            splashColor: Colors.transparent,
-            icon: Icon(
-              Icons.format_color_fill,
-              color: sortColor,
-              size: 30,
-            ),
-          ),
-        );
-
     return Scaffold(
-      floatingActionButton: changeColorButton(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          _changeButtonColor(),
+          setState(() {}),
+        },
+        backgroundColor: Colors.white,
+        child: Icon(
+          Icons.format_color_fill,
+          color: sortColor,
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       appBar: AppBar(
         elevation: 4,
