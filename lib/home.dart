@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:sortviz/components/bar.dart';
-import 'package:sortviz/components/cardView.dart';
+import 'package:sortviz/components/value_slider.dart';
 import 'package:sortviz/service/sorting_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     sortingService = SortingService(
-      size: 2,
+      size: 5,
       microsecondDuration: 500,
     );
 
@@ -84,145 +84,58 @@ class _HomeScreenState extends State<HomeScreen> {
       actions: [sortSelector()],
     );
 
+    Widget arraySizeSlider(
+            {@required ValueChanged<double> onArraySizeChanged}) =>
+        ValueSlider(
+          title: "Array Size",
+          value: sortingService.size.toDouble(),
+          max: 1000,
+          min: 2,
+          onChanged: onArraySizeChanged,
+        );
+
+    Widget durationSlider({@required ValueChanged<double> onDurationChange}) =>
+        ValueSlider(
+          title: "Duration",
+          param: "µs",
+          value: sortingService.duration.toDouble(),
+          max: 5000,
+          min: 1,
+          onChanged: onDurationChange,
+        );
+
     void showSettings() {
       showModalBottomSheet(
         context: context,
-        builder: (builder) {
-          return StatefulBuilder(
-            builder: (context, setState) {
-              return Container(
-                height: 315,
-                child: ListView(
-                  padding: const EdgeInsets.all(4),
-                  children: <Widget>[
-                    CardView(
-                      Colors.blue,
-                      130,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "Array Size",
-                            style: TextStyle(
-                              fontSize: 24.0,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            textBaseline: TextBaseline.alphabetic,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                sortingService.size.toString(),
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SliderTheme(
-                            data: SliderTheme.of(context).copyWith(
-                              activeTrackColor: Colors.black,
-                              thumbColor: Color(0xFFEB1555),
-                              overlayColor: Color(0x29EB1555),
-                              overlayShape:
-                                  RoundSliderOverlayShape(overlayRadius: 20.0),
-                              thumbShape: RoundSliderThumbShape(
-                                  enabledThumbRadius: 10.0),
-                            ),
-                            child: Slider(
-                              max: 500,
-                              min: 5,
-                              value: sortingService.size.toDouble(),
-                              inactiveColor: Colors.white,
-                              onChanged: (double value) {
-                                setState(() {
-                                  sortingService.size = value.round();
-                                  sortingService.randomise();
-                                });
-                              },
-                            ),
-                          )
-                        ],
-                      ),
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: arraySizeSlider(
+                      onArraySizeChanged: (double value) {
+                        setState(() {
+                          sortingService.size = value.round();
+                          sortingService.randomise();
+                        });
+                      },
                     ),
-                    CardView(
-                      Colors.blue,
-                      130,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "Duration",
-                            style: TextStyle(
-                              fontSize: 24.0,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            textBaseline: TextBaseline.alphabetic,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                sortingService.duration.toString(),
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                " µs",
-                                style: TextStyle(
-                                  fontSize: 25.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SliderTheme(
-                            data: SliderTheme.of(context).copyWith(
-                              activeTrackColor: Colors.black,
-                              thumbColor: Color(0xFFEB1555),
-                              overlayColor: Color(0x29EB1555),
-                              overlayShape:
-                                  RoundSliderOverlayShape(overlayRadius: 20.0),
-                              thumbShape: RoundSliderThumbShape(
-                                  enabledThumbRadius: 10.0),
-                            ),
-                            child: Slider(
-                              max: 5000,
-                              min: 1,
-                              value: sortingService.duration.toDouble(),
-                              inactiveColor: Colors.white,
-                              onChanged: (double value) {
-                                setState(() {
-                                  sortingService.duration = value.round();
-                                });
-                              },
-                            ),
-                          )
-                        ],
-                      ),
+                  ),
+                  Expanded(
+                    child: durationSlider(
+                      onDurationChange: (double value) {
+                        setState(() {
+                          sortingService.duration = value.round();
+                        });
+                      },
                     ),
-                  ],
-                ),
-              );
-            },
-          );
+                  ),
+                ],
+              ),
+            );
+          });
         },
       );
     }
