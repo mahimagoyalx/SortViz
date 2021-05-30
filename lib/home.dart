@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:sortviz/components/barPainter.dart';
+import 'package:sortviz/components/bar.dart';
 import 'package:sortviz/components/cardView.dart';
 import 'package:sortviz/service/sorting_service.dart';
 
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     sortingService = SortingService(
-      size: 200,
+      size: 2,
       microsecondDuration: 500,
     );
 
@@ -100,36 +100,34 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               actions: [sortSelector()],
             ),
-            body: Container(
-              padding: EdgeInsets.all(0),
-              child: Column(
-                children: [
-                  StreamBuilder<List<int>>(
-                    stream: stream,
-                    builder: (context, snapshot) {
-                      List<int> arr = snapshot.data;
+            body: StreamBuilder<List<int>>(
+              stream: stream,
+              builder: (context, snapshot) {
+                List<int> arr = snapshot.data;
 
-                      int ind = 0;
-                      return Row(
-                        children: arr.map(
-                          (int number) {
-                            ind++;
-                            return CustomPaint(
-                              painter: ArrayBar(
-                                sortColor: sortColor,
-                                width: MediaQuery.of(context).size.width /
-                                    sortingService.size,
-                                height: number,
-                                index: ind,
-                              ),
-                            );
-                          },
-                        ).toList(),
-                      );
-                    },
-                  ),
-                ],
-              ),
+                return LayoutBuilder(
+                  builder: (context, constrains) {
+                    double width =
+                        constrains.biggest.width / sortingService.size;
+                    List<Widget> bars = List.generate(
+                      sortingService.size,
+                      (index) => Bar(
+                        index: index,
+                        height: arr[index],
+                        width: width,
+                        color: sortColor,
+                      ),
+                    ).toList();
+
+                    return Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: bars,
+                      ),
+                    );
+                  },
+                );
+              },
             ),
             bottomNavigationBar: Row(
               children: <Widget>[
