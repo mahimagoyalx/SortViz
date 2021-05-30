@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Color> colors;
   SortingService sortingService;
   int s = 0;
-  String dropdownValue = "Merge Sort";
+  String sortingType = "Merge Sort";
   Stream<List<int>> stream;
 
   @override
@@ -46,25 +46,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String title;
-    switch (s) {
-      case 0:
-        title = "Merge Sort";
-        break;
-      case 1:
-        title = "Quick Sort";
-        break;
-      case 2:
-        title = "Selection Sort";
-        break;
-      case 3:
-        title = "Bubble Sort";
-        break;
-      case 4:
-        title = "Insertion Sort";
-        break;
-      case 5:
-        title = "Heap Sort";
+    void changeSort(Sort sort) {
+      setState(() {
+        sortingType = sort.name;
+      });
+    }
+
+    List<DropdownMenuItem<Sort>> sorts = Sort.values
+        .map((sort) => DropdownMenuItem<Sort>(
+              value: sort,
+              child: Text(sort.name),
+            ))
+        .toList();
+
+    Widget sortSelector() {
+      return DropdownButtonHideUnderline(
+        child: DropdownButton(
+          icon: Icon(
+            Icons.more_vert,
+            color: Colors.white,
+          ),
+          iconSize: 24,
+          onChanged: changeSort,
+          items: sorts,
+        ),
+      );
     }
 
     return Material(
@@ -90,72 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontSize: 19.0,
               ),
             ),
-            actions: <Widget>[
-              DropdownButtonHideUnderline(
-                child: DropdownButton(
-                  icon: Icon(
-                    Icons.more_vert,
-                    color: Colors.white,
-                  ),
-                  iconSize: 24,
-                  onChanged: (String newValue) {
-                    setState(() {
-                      switch (newValue) {
-                        case 'Merge Sort':
-                          setState(() {
-                            s = 0;
-                          });
-                          break;
-                        case 'Quick Sort':
-                          setState(() {
-                            s = 1;
-                            print(s);
-                          });
-                          break;
-                        case 'Selection Sort':
-                          setState(() {
-                            s = 2;
-                            print(s);
-                          });
-                          break;
-                        case 'Bubble Sort':
-                          setState(() {
-                            s = 3;
-                            print(s);
-                          });
-                          break;
-                        case 'Insertion Sort':
-                          setState(() {
-                            s = 4;
-                            print(s);
-                          });
-                          break;
-                        case 'Heap Sort':
-                          setState(() {
-                            s = 5;
-                            print(s);
-                          });
-                          break;
-                      }
-                      dropdownValue = newValue;
-                    });
-                  },
-                  items: <String>[
-                    'Merge Sort',
-                    'Quick Sort',
-                    'Selection Sort',
-                    'Bubble Sort',
-                    'Insertion Sort',
-                    'Heap Sort'
-                  ].map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-              )
-            ],
+            actions: [sortSelector()],
           ),
           body: Container(
             padding: EdgeInsets.all(0),
@@ -229,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             }
                           },
                           child: Text(
-                            title,
+                            sortingType,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 18,

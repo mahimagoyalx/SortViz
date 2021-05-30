@@ -3,6 +3,27 @@ import 'dart:math';
 
 import 'package:meta/meta.dart';
 
+enum Sort {
+  MERGE_SORT,
+  QUICK_SORT,
+  SELECTION_SORT,
+  BUBBLE_SORT,
+  INSERTION_SORT,
+  HEAP_SORT
+}
+
+extension SortExtension on Sort {
+  String get name {
+    return this
+        .toString()
+        .split(".")[1]
+        .split("_")
+        .map((str) => str.toLowerCase())
+        .map((str) => str[0].toUpperCase() + str.substring(1))
+        .join(" ");
+  }
+}
+
 class SortingService {
   SortingService({@required int size, @required int microsecondDuration})
       : this._size = size,
