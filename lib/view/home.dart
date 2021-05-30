@@ -103,26 +103,30 @@ class _HomeScreenState extends State<HomeScreen> {
       showModalBottomSheet(
         context: context,
         builder: (context) {
-          return Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                arraySizeSlider(
-                  onArraySizeChanged: (double value) {
-                    setState(() {
-                      sortingService.size = value.round();
-                    });
-                  },
+          return StatefulBuilder(
+            builder: (context, setState) {
+              return Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    arraySizeSlider(
+                      onArraySizeChanged: (double value) {
+                        setState(() {
+                          sortingService.size = value.round();
+                        });
+                      },
+                    ),
+                    durationSlider(
+                      onDurationChange: (double value) {
+                        setState(() {
+                          sortingService.duration = value.round();
+                        });
+                      },
+                    ),
+                  ],
                 ),
-                durationSlider(
-                  onDurationChange: (double value) {
-                    setState(() {
-                      sortingService.duration = value.round();
-                    });
-                  },
-                ),
-              ],
-            ),
+              );
+            },
           );
         },
       );
@@ -169,61 +173,56 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     return Material(
-      child: StatefulBuilder(
-        builder: (context, setState) {
-          return Scaffold(
-            floatingActionButton: changeColorButton,
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.startFloat,
-            appBar: appBar,
-            body: LayoutBuilder(
-              builder: (context, constrains) {
-                sortingService.height = constrains.biggest.height.toInt();
+      child: Scaffold(
+        floatingActionButton: changeColorButton,
+        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+        appBar: appBar,
+        body: LayoutBuilder(
+          builder: (context, constrains) {
+            sortingService.height = constrains.biggest.height.toInt();
 
-                return StreamBuilder<List<int>>(
-                  stream: sortingService.stream,
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return Container();
-                    }
+            return StreamBuilder<List<int>>(
+              stream: sortingService.stream,
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Container();
+                }
 
-                    List<int> arr = snapshot.data;
-                    double barWidth =
-                        constrains.biggest.width / sortingService.size;
-                    List<Widget> bars = List.generate(
-                      sortingService.size,
-                      (index) => Bar(
-                        index: index,
-                        height: arr[index],
-                        width: barWidth,
-                        color: sortColor,
-                      ),
-                    ).toList();
+                List<int> arr = snapshot.data;
+                double barWidth =
+                    constrains.biggest.width / sortingService.size;
+                List<Widget> bars = List.generate(
+                  sortingService.size,
+                  (index) => Bar(
+                    index: index,
+                    height: arr[index],
+                    width: barWidth,
+                    color: sortColor,
+                  ),
+                ).toList();
 
-                    return Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: bars,
-                    );
-                  },
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: bars,
                 );
               },
-            ),
-            bottomNavigationBar: BottomAppBar(
-              child: SizedBox(
-                height: appBar.preferredSize.height,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: sortButton,
-                    ),
-                    shuffleButton,
-                    settingsButton,
-                  ],
+            );
+          },
+        ),
+        bottomNavigationBar: BottomAppBar(
+          child: SizedBox(
+            height: appBar.preferredSize.height,
+            child: Row(
+              children: [
+                Expanded(
+                  child: sortButton,
                 ),
-              ),
+                shuffleButton,
+                settingsButton,
+              ],
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }
