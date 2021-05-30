@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     Widget shuffleButton = IconButton(
-      onPressed: sortingService.randomise,
+      onPressed: sortingService.shuffle,
       icon: Icon(
         Icons.shuffle,
         size: 24,
