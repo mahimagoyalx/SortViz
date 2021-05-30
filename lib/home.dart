@@ -67,390 +67,405 @@ class _HomeScreenState extends State<HomeScreen> {
         title = "Heap Sort";
     }
 
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {
-          _changeButtonColor(),
-          setState(() {}),
-        },
-        backgroundColor: Colors.white,
-        child: Icon(
-          Icons.format_color_fill,
-          color: sortColor,
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      appBar: AppBar(
-        elevation: 4,
-        title: Text(
-          "Sorting Visualiser",
-          style: TextStyle(
-            fontSize: 19.0,
+    return Material(
+      child: StatefulBuilder(builder: (context, setState) {
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => {
+              _changeButtonColor(),
+              setState(() {}),
+            },
+            backgroundColor: Colors.white,
+            child: Icon(
+              Icons.format_color_fill,
+              color: sortColor,
+            ),
           ),
-        ),
-        actions: <Widget>[
-          DropdownButtonHideUnderline(
-            child: DropdownButton(
-              icon: Icon(
-                Icons.more_vert,
-                color: Colors.white,
+          floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+          appBar: AppBar(
+            elevation: 4,
+            title: Text(
+              "Sorting Visualiser",
+              style: TextStyle(
+                fontSize: 19.0,
               ),
-              iconSize: 24,
-              onChanged: (String newValue) {
-                setState(() {
-                  switch (newValue) {
-                    case 'Merge Sort':
-                      setState(() {
-                        s = 0;
-                      });
-                      break;
-                    case 'Quick Sort':
-                      setState(() {
-                        s = 1;
-                        print(s);
-                      });
-                      break;
-                    case 'Selection Sort':
-                      setState(() {
-                        s = 2;
-                        print(s);
-                      });
-                      break;
-                    case 'Bubble Sort':
-                      setState(() {
-                        s = 3;
-                        print(s);
-                      });
-                      break;
-                    case 'Insertion Sort':
-                      setState(() {
-                        s = 4;
-                        print(s);
-                      });
-                      break;
-                    case 'Heap Sort':
-                      setState(() {
-                        s = 5;
-                        print(s);
-                      });
-                      break;
-                  }
-                  dropdownValue = newValue;
-                });
-              },
-              items: <String>[
-                'Merge Sort',
-                'Quick Sort',
-                'Selection Sort',
-                'Bubble Sort',
-                'Insertion Sort',
-                'Heap Sort'
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
             ),
-          )
-        ],
-      ),
-      body: Container(
-        padding: EdgeInsets.all(0),
-        child: Column(
-          children: [
-            StreamBuilder<List<int>>(
-              stream: stream,
-              builder: (context, snapshot) {
-                List<int> arr = snapshot.data;
+            actions: <Widget>[
+              DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: Colors.white,
+                  ),
+                  iconSize: 24,
+                  onChanged: (String newValue) {
+                    setState(() {
+                      switch (newValue) {
+                        case 'Merge Sort':
+                          setState(() {
+                            s = 0;
+                          });
+                          break;
+                        case 'Quick Sort':
+                          setState(() {
+                            s = 1;
+                            print(s);
+                          });
+                          break;
+                        case 'Selection Sort':
+                          setState(() {
+                            s = 2;
+                            print(s);
+                          });
+                          break;
+                        case 'Bubble Sort':
+                          setState(() {
+                            s = 3;
+                            print(s);
+                          });
+                          break;
+                        case 'Insertion Sort':
+                          setState(() {
+                            s = 4;
+                            print(s);
+                          });
+                          break;
+                        case 'Heap Sort':
+                          setState(() {
+                            s = 5;
+                            print(s);
+                          });
+                          break;
+                      }
+                      dropdownValue = newValue;
+                    });
+                  },
+                  items: <String>[
+                    'Merge Sort',
+                    'Quick Sort',
+                    'Selection Sort',
+                    'Bubble Sort',
+                    'Insertion Sort',
+                    'Heap Sort'
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              )
+            ],
+          ),
+          body: Container(
+            padding: EdgeInsets.all(0),
+            child: Column(
+              children: [
+                StreamBuilder<List<int>>(
+                  stream: stream,
+                  builder: (context, snapshot) {
+                    List<int> arr = snapshot.data;
 
-                int ind = 0;
-                return Row(
-                  children: arr.map(
-                    (int number) {
-                      ind++;
-                      return CustomPaint(
-                        painter: ArrayBar(
-                          sortColor: sortColor,
-                          width: MediaQuery.of(context).size.width /
-                              sortingService.size,
-                          height: number,
-                          index: ind,
-                        ),
-                      );
-                    },
-                  ).toList(),
-                );
-              },
+                    int ind = 0;
+                    return Row(
+                      children: arr.map(
+                        (int number) {
+                          ind++;
+                          return CustomPaint(
+                            painter: ArrayBar(
+                              sortColor: sortColor,
+                              width: MediaQuery.of(context).size.width /
+                                  sortingService.size,
+                              height: number,
+                              index: ind,
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Row(
-        children: <Widget>[
-          Container(
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            child: BottomAppBar(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width - 150,
-                    height: 55,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        primary: Colors.white,
-                      ),
-                      onPressed: () async {
-                        switch (s) {
-                          case 0:
-                            await sortingService.mergeSort(
-                                0, sortingService.size - 1);
-                            break;
-                          case 1:
-                            await sortingService.quickSort(
-                                0, sortingService.size - 1);
-                            break;
-                          case 2:
-                            sortingService.selectionSort();
-                            break;
-                          case 3:
-                            sortingService.bubbleSort();
-                            break;
-                          case 4:
-                            sortingService.insertionSort();
-                            break;
-                          case 5:
-                            await sortingService.heapSort();
-                            break;
-                        }
-                      },
-                      child: Text(
-                        title,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
+          ),
+          bottomNavigationBar: Row(
+            children: <Widget>[
+              Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: BottomAppBar(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 150,
+                        height: 55,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                          ),
+                          onPressed: () async {
+                            switch (s) {
+                              case 0:
+                                await sortingService.mergeSort(
+                                    0, sortingService.size - 1);
+                                break;
+                              case 1:
+                                await sortingService.quickSort(
+                                    0, sortingService.size - 1);
+                                break;
+                              case 2:
+                                sortingService.selectionSort();
+                                break;
+                              case 3:
+                                sortingService.bubbleSort();
+                                break;
+                              case 4:
+                                sortingService.insertionSort();
+                                break;
+                              case 5:
+                                await sortingService.heapSort();
+                                break;
+                            }
+                          },
+                          child: Text(
+                            title,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 75,
-                    height: 55,
-                    child: TextButton(
-                      style: TextButton.styleFrom(primary: Colors.white),
-                      onPressed: sortingService.randomise,
-                      child: Icon(
-                        Icons.shuffle,
-                        size: 24,
+                      SizedBox(
+                        width: 75,
+                        height: 55,
+                        child: TextButton(
+                          style: TextButton.styleFrom(primary: Colors.white),
+                          onPressed: sortingService.randomise,
+                          child: Icon(
+                            Icons.shuffle,
+                            size: 24,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 75,
-                    height: 55,
-                    child: TextButton(
-                      style: TextButton.styleFrom(primary: Colors.white),
-                      onPressed: () {
-                        setState(
-                          () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (builder) {
-                                return StatefulBuilder(
-                                  builder: (context, setState) {
-                                    return Container(
-                                      height: 315,
-                                      child: ListView(
-                                        padding: const EdgeInsets.all(4),
-                                        children: <Widget>[
-                                          CardView(
-                                            Colors.blue,
-                                            130,
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Text(
-                                                  "Array Size",
-                                                  style: TextStyle(
-                                                    fontSize: 24.0,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 5.0,
-                                                ),
-                                                Row(
+                      SizedBox(
+                        width: 75,
+                        height: 55,
+                        child: TextButton(
+                          style: TextButton.styleFrom(primary: Colors.white),
+                          onPressed: () {
+                            setState(
+                              () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (builder) {
+                                    return StatefulBuilder(
+                                      builder: (context, setState) {
+                                        return Container(
+                                          height: 315,
+                                          child: ListView(
+                                            padding: const EdgeInsets.all(4),
+                                            children: <Widget>[
+                                              CardView(
+                                                Colors.blue,
+                                                130,
+                                                Column(
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .baseline,
-                                                  textBaseline:
-                                                      TextBaseline.alphabetic,
+                                                      CrossAxisAlignment.center,
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: <Widget>[
                                                     Text(
-                                                      sortingService.size
-                                                          .toString(),
+                                                      "Array Size",
                                                       style: TextStyle(
                                                         fontSize: 24.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
                                                         color: Colors.white,
                                                       ),
                                                     ),
+                                                    SizedBox(
+                                                      height: 5.0,
+                                                    ),
+                                                    Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .baseline,
+                                                      textBaseline: TextBaseline
+                                                          .alphabetic,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          sortingService.size
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                            fontSize: 24.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SliderTheme(
+                                                      data: SliderTheme.of(
+                                                              context)
+                                                          .copyWith(
+                                                        activeTrackColor:
+                                                            Colors.black,
+                                                        thumbColor:
+                                                            Color(0xFFEB1555),
+                                                        overlayColor:
+                                                            Color(0x29EB1555),
+                                                        overlayShape:
+                                                            RoundSliderOverlayShape(
+                                                                overlayRadius:
+                                                                    20.0),
+                                                        thumbShape:
+                                                            RoundSliderThumbShape(
+                                                                enabledThumbRadius:
+                                                                    10.0),
+                                                      ),
+                                                      child: Slider(
+                                                        max: 500,
+                                                        min: 5,
+                                                        value: sortingService
+                                                            .size
+                                                            .toDouble(),
+                                                        inactiveColor:
+                                                            Colors.white,
+                                                        onChanged:
+                                                            (double value) {
+                                                          setState(() {
+                                                            sortingService
+                                                                    .size =
+                                                                value.round();
+                                                            sortingService
+                                                                .randomise();
+                                                          });
+                                                        },
+                                                      ),
+                                                    )
                                                   ],
                                                 ),
-                                                SliderTheme(
-                                                  data: SliderTheme.of(context)
-                                                      .copyWith(
-                                                    activeTrackColor:
-                                                        Colors.black,
-                                                    thumbColor:
-                                                        Color(0xFFEB1555),
-                                                    overlayColor:
-                                                        Color(0x29EB1555),
-                                                    overlayShape:
-                                                        RoundSliderOverlayShape(
-                                                            overlayRadius:
-                                                                20.0),
-                                                    thumbShape:
-                                                        RoundSliderThumbShape(
-                                                            enabledThumbRadius:
-                                                                10.0),
-                                                  ),
-                                                  child: Slider(
-                                                    max: 500,
-                                                    min: 5,
-                                                    value: sortingService.size
-                                                        .toDouble(),
-                                                    inactiveColor: Colors.white,
-                                                    onChanged: (double value) {
-                                                      setState(() {
-                                                        sortingService.size =
-                                                            value.round();
-                                                        sortingService
-                                                            .randomise();
-                                                      });
-                                                    },
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          CardView(
-                                            Colors.blue,
-                                            130,
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Text(
-                                                  "Duration",
-                                                  style: TextStyle(
-                                                    fontSize: 24.0,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Row(
+                                              ),
+                                              CardView(
+                                                Colors.blue,
+                                                130,
+                                                Column(
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .baseline,
-                                                  textBaseline:
-                                                      TextBaseline.alphabetic,
+                                                      CrossAxisAlignment.center,
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: <Widget>[
                                                     Text(
-                                                      sortingService.duration
-                                                          .toString(),
+                                                      "Duration",
                                                       style: TextStyle(
                                                         fontSize: 24.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
                                                         color: Colors.white,
                                                       ),
                                                     ),
-                                                    Text(
-                                                      " µs",
-                                                      style: TextStyle(
-                                                        fontSize: 25.0,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                                    SizedBox(
+                                                      height: 5,
                                                     ),
+                                                    Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .baseline,
+                                                      textBaseline: TextBaseline
+                                                          .alphabetic,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          sortingService
+                                                              .duration
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                            fontSize: 24.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          " µs",
+                                                          style: TextStyle(
+                                                            fontSize: 25.0,
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SliderTheme(
+                                                      data: SliderTheme.of(
+                                                              context)
+                                                          .copyWith(
+                                                        activeTrackColor:
+                                                            Colors.black,
+                                                        thumbColor:
+                                                            Color(0xFFEB1555),
+                                                        overlayColor:
+                                                            Color(0x29EB1555),
+                                                        overlayShape:
+                                                            RoundSliderOverlayShape(
+                                                                overlayRadius:
+                                                                    20.0),
+                                                        thumbShape:
+                                                            RoundSliderThumbShape(
+                                                                enabledThumbRadius:
+                                                                    10.0),
+                                                      ),
+                                                      child: Slider(
+                                                        max: 5000,
+                                                        min: 1,
+                                                        value: sortingService
+                                                            .duration
+                                                            .toDouble(),
+                                                        inactiveColor:
+                                                            Colors.white,
+                                                        onChanged:
+                                                            (double value) {
+                                                          setState(() {
+                                                            sortingService
+                                                                    .duration =
+                                                                value.round();
+                                                          });
+                                                        },
+                                                      ),
+                                                    )
                                                   ],
                                                 ),
-                                                SliderTheme(
-                                                  data: SliderTheme.of(context)
-                                                      .copyWith(
-                                                    activeTrackColor:
-                                                        Colors.black,
-                                                    thumbColor:
-                                                        Color(0xFFEB1555),
-                                                    overlayColor:
-                                                        Color(0x29EB1555),
-                                                    overlayShape:
-                                                        RoundSliderOverlayShape(
-                                                            overlayRadius:
-                                                                20.0),
-                                                    thumbShape:
-                                                        RoundSliderThumbShape(
-                                                            enabledThumbRadius:
-                                                                10.0),
-                                                  ),
-                                                  child: Slider(
-                                                    max: 5000,
-                                                    min: 1,
-                                                    value: sortingService
-                                                        .duration
-                                                        .toDouble(),
-                                                    inactiveColor: Colors.white,
-                                                    onChanged: (double value) {
-                                                      setState(() {
-                                                        sortingService
-                                                                .duration =
-                                                            value.round();
-                                                      });
-                                                    },
-                                                  ),
-                                                )
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
-                                      ),
+                                        );
+                                      },
                                     );
                                   },
                                 );
                               },
                             );
                           },
-                        );
-                      },
-                      child: Icon(
-                        Icons.settings,
-                        size: 24,
+                          child: Icon(
+                            Icons.settings,
+                            size: 24,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        );
+      }),
     );
   }
 }
