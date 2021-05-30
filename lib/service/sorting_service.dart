@@ -26,7 +26,7 @@ class SortingService {
   bool _pause = true;
   int _size = 50;
   int _height;
-  int duration = 5000;
+  int duration = 500;
   final List<int> arr = [];
   final StreamController<List<int>> _streamController =
       StreamController<List<int>>();
