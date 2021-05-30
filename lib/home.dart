@@ -39,13 +39,19 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  _changeButtonColor() {
-    if (c == 3) c = 0;
-    sortColor = colors[c++];
-  }
-
   @override
   Widget build(BuildContext context) {
+    Widget changeColorButton = FloatingActionButton(
+      onPressed: () => setState(() {
+        sortColor = colors[c++ % 3];
+      }),
+      backgroundColor: Colors.white,
+      child: Icon(
+        Icons.format_color_fill,
+        color: sortColor,
+      ),
+    );
+
     void changeSort(Sort sort) {
       setState(() {
         sortingType = sort;
@@ -178,17 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: StatefulBuilder(
         builder: (context, setState) {
           return Scaffold(
-            floatingActionButton: FloatingActionButton(
-              onPressed: () => {
-                _changeButtonColor(),
-                setState(() {}),
-              },
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.format_color_fill,
-                color: sortColor,
-              ),
-            ),
+            floatingActionButton: changeColorButton,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.startFloat,
             appBar: appBar,
