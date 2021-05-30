@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sortviz/home.dart';
+import 'package:sortviz/view/home.dart';
 
 void main() {
   runApp(MyApp());

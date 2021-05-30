@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sortviz/components/barPainter.dart';
-import 'package:sortviz/utils.color_picker.dart';
+import 'package:sortviz/util/color_picker.dart';
 
 class Bar extends StatelessWidget {
   final Color _color;
