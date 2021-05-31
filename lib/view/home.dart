@@ -50,6 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         sortingType = sort;
       });
+
+      sortingService.shuffle();
     }
 
     List<DropdownMenuItem<Sort>> sorts = Sort.values
