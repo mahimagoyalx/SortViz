@@ -141,7 +141,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     Widget sortButton = InkWell(
       onTap: () {
-        sortingService.sort(sortingType);
+        if (sortingService.pause) {
+          sortingService.sort(sortingType);
+        }
       },
       child: Center(
         child: Text(

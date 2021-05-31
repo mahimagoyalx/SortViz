@@ -132,7 +132,6 @@ class SortingService {
   }
 
   /// Insertion Sort
-  // Insertion Sort
   insertionSort() async {
     for (int i = 1; i < arr.length; i++) {
       int temp = arr[i];
