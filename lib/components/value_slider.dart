@@ -41,49 +41,55 @@ class ValueSlider extends StatelessWidget {
         child: Material(
           color: _backgroundColor,
           borderRadius: BorderRadius.circular(8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text(
-                _title,
-                style: TextStyle(
-                  fontSize: 24.0,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 8.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                textBaseline: TextBaseline.alphabetic,
-                children: <Widget>[
-                  Text(
-                    _value.toString(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    _title,
                     style: TextStyle(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                       color: Colors.white,
                     ),
                   ),
-                  _param != null
-                      ? Text(
-                          " " + _param,
-                          style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      : Container(),
-                ],
-              ),
-              Slider(
-                max: _max,
-                min: _min,
-                value: _value,
-                inactiveColor: Colors.white,
-                onChanged: _onChanged,
-              )
-            ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: <Widget>[
+                    Text(
+                      _value.toString(),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    _param != null
+                        ? Text(
+                            " " + _param,
+                            style: TextStyle(
+                              fontSize: 25.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        : Container(),
+                  ],
+                ),
+                Expanded(
+                  child: Slider(
+                    max: _max,
+                    min: _min,
+                    value: _value,
+                    inactiveColor: Colors.white,
+                    onChanged: _onChanged,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
