@@ -65,6 +65,7 @@ class SortingService {
 
   void sort(Sort sort) async {
     _pause = false;
+
     switch (sort) {
       case Sort.MERGE_SORT:
         mergeSort(0, _size - 1);

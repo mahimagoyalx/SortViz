@@ -11,6 +11,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  static const double MAX_DURATION = 50000;
+  static const double MIN_DURATION = 0;
+  static const double MAX_ARRAY_SIZE = 1000;
+  static const double MIN_ARRAY_SIZE = 2;
   Color sortColor = Colors.blue;
   int c = 0;
   List<Color> colors = [Colors.pink, Colors.teal, Colors.blue];
@@ -29,8 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
       // Intentionally disabling it, makes sense right?
       onPressed: () => sortingService.pause
           ? setState(() {
-              sortColor = colors[c++ % 3];
-            })
+        sortColor = colors[c++ % 3];
+      })
           : null,
       backgroundColor: Colors.white,
       child: Icon(
@@ -47,9 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     List<DropdownMenuItem<Sort>> sorts = Sort.values
         .map((sort) => DropdownMenuItem<Sort>(
-              value: sort,
-              child: Text(sort.name),
-            ))
+      value: sort,
+      child: Text(sort.name),
+    ))
         .toList();
 
     Widget sortSelector() {
@@ -77,13 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
       actions: [sortSelector()],
     );
 
-    Widget arraySizeSlider(
-            {@required ValueChanged<double> onArraySizeChanged}) =>
+    Widget arraySizeSlider({@required ValueChanged<double> onArraySizeChanged}) =>
         ValueSlider(
           title: "Array Size",
           value: sortingService.size.toDouble(),
-          max: 1000,
-          min: 2,
+          max: MAX_ARRAY_SIZE,
+          min: MIN_ARRAY_SIZE,
           onChanged: onArraySizeChanged,
           backgroundColor: sortColor,
         );
@@ -93,8 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
           title: "Duration",
           param: "µs",
           value: sortingService.duration.toDouble(),
-          max: 5000,
-          min: 1,
+          max: MAX_DURATION,
+          min: MIN_DURATION,
           onChanged: onDurationChange,
           backgroundColor: sortColor,
         );
@@ -148,8 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    Widget iconButton(
-            {@required VoidCallback onPressed, @required IconData icon}) =>
+    Widget iconButton({@required VoidCallback onPressed, @required IconData icon}) =>
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: IconButton(
@@ -193,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     constrains.biggest.width / sortingService.size;
                 List<Widget> bars = List.generate(
                   sortingService.size,
-                  (index) => Bar(
+                      (index) => Bar(
                     index: index,
                     height: arr[index],
                     width: barWidth,
