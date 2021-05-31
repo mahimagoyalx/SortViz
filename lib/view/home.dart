@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Color> colors = [Colors.pink, Colors.teal, Colors.blue];
   SortingService sortingService = SortingService();
   Sort sortingType = Sort.MERGE_SORT;
+  double height = -1;
 
   @override
   void dispose() {
@@ -31,11 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Widget changeColorButton = FloatingActionButton(
       // Intentionally disabling it, makes sense right?
-      onPressed: () => sortingService.pause
-          ? setState(() {
+      onPressed: () {
         sortColor = colors[c++ % 3];
-      })
-          : null,
+
+        if (sortingService.pause) {
+          setState(() {});
+        }
+      },
       backgroundColor: Colors.white,
       child: Icon(
         Icons.format_color_fill,
@@ -51,9 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     List<DropdownMenuItem<Sort>> sorts = Sort.values
         .map((sort) => DropdownMenuItem<Sort>(
-      value: sort,
-      child: Text(sort.name),
-    ))
+              value: sort,
+              child: Text(sort.name),
+            ))
         .toList();
 
     Widget sortSelector() {
@@ -81,7 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
       actions: [sortSelector()],
     );
 
-    Widget arraySizeSlider({@required ValueChanged<double> onArraySizeChanged}) =>
+    Widget arraySizeSlider(
+            {@required ValueChanged<double> onArraySizeChanged}) =>
         ValueSlider(
           title: "Array Size",
           value: sortingService.size.toDouble(),
@@ -151,7 +155,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    Widget iconButton({@required VoidCallback onPressed, @required IconData icon}) =>
+    Widget iconButton(
+            {@required VoidCallback onPressed, @required IconData icon}) =>
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: IconButton(
@@ -182,6 +187,11 @@ class _HomeScreenState extends State<HomeScreen> {
         body: LayoutBuilder(
           builder: (context, constrains) {
             sortingService.height = constrains.biggest.height.toInt();
+
+            if (height != constrains.biggest.height) {
+              height = constrains.biggest.height;
+              sortingService.shuffle();
+            }
 
             return StreamBuilder<List<int>>(
               stream: sortingService.stream,

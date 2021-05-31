@@ -44,7 +44,6 @@ class SortingService {
 
   set height(int height) {
     this._height = height;
-    shuffle();
   }
 
   void dispose() {
@@ -68,30 +67,32 @@ class SortingService {
 
     switch (sort) {
       case Sort.MERGE_SORT:
-        mergeSort(0, _size - 1);
+        await mergeSort(0, _size - 1);
         break;
       case Sort.QUICK_SORT:
-        quickSort(0, _size - 1);
+        await quickSort(0, _size - 1);
         break;
       case Sort.SELECTION_SORT:
-        selectionSort();
+        await selectionSort();
         break;
       case Sort.BUBBLE_SORT:
-        bubbleSort();
+        await bubbleSort();
         break;
       case Sort.INSERTION_SORT:
-        insertionSort();
+        await insertionSort();
         break;
       case Sort.HEAP_SORT:
-        heapSort();
+        await heapSort();
         break;
     }
+
+    _pause = true;
   }
 
   // Sorting Algorithms
 
   /// Bubble Sort
-  void bubbleSort() async {
+  bubbleSort() async {
     for (int i = 0; i < arr.length; ++i) {
       for (int j = 0; j < arr.length - i - 1; ++j) {
         if (arr[j] > arr[j + 1]) {
