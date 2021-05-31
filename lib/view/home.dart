@@ -205,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     constrains.biggest.width / sortingService.size;
                 List<Widget> bars = List.generate(
                   sortingService.size,
-                      (index) => Bar(
+                  (index) => Bar(
                     index: index,
                     height: arr[index],
                     width: barWidth,
