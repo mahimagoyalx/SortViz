@@ -63,7 +63,7 @@ class SortingService {
     _streamController.add(arr);
   }
 
-  void sort(Sort sort) {
+  void sort(Sort sort) async {
     _pause = false;
     switch (sort) {
       case Sort.MERGE_SORT:
@@ -130,6 +130,7 @@ class SortingService {
   }
 
   /// Insertion Sort
+  // Insertion Sort
   insertionSort() async {
     for (int i = 1; i < arr.length; i++) {
       int temp = arr[i];
@@ -146,6 +147,8 @@ class SortingService {
           return;
         }
       }
+
+      arr[j + 1] = temp;
 
       if (!_pause) {
         await Future.delayed(Duration(microseconds: duration))
