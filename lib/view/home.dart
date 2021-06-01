@@ -11,9 +11,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const double MAX_DURATION = 50000;
+  static const double MAX_DURATION = 80;
   static const double MIN_DURATION = 0;
-  static const double MAX_ARRAY_SIZE = 1000;
+  static const double MAX_ARRAY_SIZE = 500;
   static const double MIN_ARRAY_SIZE = 2;
   Color sortColor = Colors.blue;
   int c = 0;
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget durationSlider({@required ValueChanged<double> onDurationChange}) =>
         ValueSlider(
           title: "Duration",
-          param: "µs",
+          param: "ms",
           value: sortingService.duration.toDouble(),
           max: MAX_DURATION,
           min: MIN_DURATION,

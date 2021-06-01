@@ -26,7 +26,7 @@ class SortingService {
   bool _pause = true;
   int _size = 50;
   int _height;
-  int duration = 500;
+  int duration = 30;
   final List<int> arr = [];
   final StreamController<List<int>> _streamController =
       StreamController<List<int>>();
@@ -102,7 +102,7 @@ class SortingService {
         }
 
         if (!_pause) {
-          await Future.delayed(Duration(microseconds: duration))
+          await Future.delayed(Duration(milliseconds: duration))
               .then((_) => _streamController.add(arr));
         } else {
           return;
@@ -122,7 +122,7 @@ class SortingService {
         }
 
         if (!_pause) {
-          await Future.delayed(Duration(microseconds: duration))
+          await Future.delayed(Duration(milliseconds: duration))
               .then((_) => _streamController.add(arr));
         } else {
           return;
@@ -142,7 +142,7 @@ class SortingService {
         --j;
 
         if (!_pause) {
-          await Future.delayed(Duration(microseconds: duration))
+          await Future.delayed(Duration(milliseconds: duration))
               .then((_) => _streamController.add(arr));
         } else {
           return;
@@ -152,7 +152,7 @@ class SortingService {
       arr[j + 1] = temp;
 
       if (!_pause) {
-        await Future.delayed(Duration(microseconds: duration))
+        await Future.delayed(Duration(milliseconds: duration))
             .then((_) => _streamController.add(arr));
       } else {
         return;
@@ -192,7 +192,7 @@ class SortingService {
         k++;
 
         if (!_pause) {
-          await Future.delayed(Duration(microseconds: duration))
+          await Future.delayed(Duration(milliseconds: duration))
               .then((_) => _streamController.add(arr));
         } else {
           return;
@@ -205,7 +205,7 @@ class SortingService {
         k++;
 
         if (!_pause) {
-          await Future.delayed(Duration(microseconds: duration))
+          await Future.delayed(Duration(milliseconds: duration))
               .then((_) => _streamController.add(arr));
         } else {
           return;
@@ -218,7 +218,7 @@ class SortingService {
         k++;
 
         if (!_pause) {
-          await Future.delayed(Duration(microseconds: duration))
+          await Future.delayed(Duration(milliseconds: duration))
               .then((_) => _streamController.add(arr));
         } else {
           return;
@@ -236,7 +236,7 @@ class SortingService {
       }
 
       if (!_pause) {
-        await Future.delayed(Duration(microseconds: duration))
+        await Future.delayed(Duration(milliseconds: duration))
             .then((_) => _streamController.add(arr));
       }
 
@@ -256,7 +256,7 @@ class SortingService {
       arr[right] = temp;
 
       if (!_pause) {
-        await Future.delayed(Duration(microseconds: duration))
+        await Future.delayed(Duration(milliseconds: duration))
             .then((_) => _streamController.add(arr));
       } else {
         return Future.value(0);
@@ -272,7 +272,7 @@ class SortingService {
           cursor++;
 
           if (!_pause) {
-            await Future.delayed(Duration(microseconds: duration))
+            await Future.delayed(Duration(milliseconds: duration))
                 .then((_) => _streamController.add(arr));
           } else {
             break;
@@ -285,7 +285,7 @@ class SortingService {
       arr[cursor] = temp;
 
       if (!_pause) {
-        await Future.delayed(Duration(microseconds: duration))
+        await Future.delayed(Duration(milliseconds: duration))
             .then((_) => _streamController.add(arr));
       }
 
@@ -359,7 +359,7 @@ class SortingService {
     }
 
     if (!_pause) {
-      await Future.delayed(Duration(microseconds: duration))
+      await Future.delayed(Duration(milliseconds: duration))
           .then((_) => _streamController.add(arr));
     } else {
       return;
