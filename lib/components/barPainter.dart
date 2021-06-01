@@ -5,7 +5,9 @@ class ArrayBar extends CustomPainter {
   final int height;
   final int index;
   final Color sortColor;
+
   ArrayBar({this.width, this.height, this.index, this.sortColor});
+
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint();
