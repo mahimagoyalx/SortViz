@@ -24,9 +24,9 @@ extension SortExtension on Sort {
 
 class SortingService {
   bool _pause = true;
-  int _size = 50;
+  int _size = 100;
   int _height;
-  int duration = 30;
+  int duration = 40;
   final List<int> arr = [];
   final StreamController<List<int>> _streamController =
       StreamController<List<int>>();
