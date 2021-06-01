@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
       title: 'Sorting Visualiser',
       theme: ThemeData(
         fontFamily: 'Lato',
-        primaryColor: Colors.grey.shade800,
-        bottomAppBarColor: Colors.grey.shade800,
+        primaryColor: Color(0xFF202124),
+        bottomAppBarColor: Color(0xFF202124),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         sliderTheme: SliderTheme.of(context).copyWith(
           activeTrackColor: Colors.black,
