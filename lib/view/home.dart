@@ -31,13 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Widget changeColorButton = FloatingActionButton(
-      // Intentionally disabling it, makes sense right?
       onPressed: () {
         sortColor = colors[c++ % 3];
 
-        if (sortingService.pause) {
-          setState(() {});
-        }
+        // if (sortingService.pause) {
+        setState(() {});
+        // }
       },
       backgroundColor: Colors.white,
       child: Icon(
