@@ -62,7 +62,7 @@ class ValueSlider extends StatelessWidget {
                     Text(
                       _value.toString(),
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -71,7 +71,7 @@ class ValueSlider extends StatelessWidget {
                         ? Text(
                             " " + _param,
                             style: TextStyle(
-                              fontSize: 25.0,
+                              fontSize: 24,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
