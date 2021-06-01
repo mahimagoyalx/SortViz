@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:sortviz/components/barPainter.dart';
 import 'package:sortviz/util/color_picker.dart';
 
 class Bar extends StatelessWidget {
-  final Color _color;
   final int _height;
   final double _width;
-  final int _index;
   final ColorPicker _colorPicker;
 
   Bar(
-      {@required Color color,
+      {@required int index,
       @required int height,
       @required double width,
-      @required int index,
+      @required Color color,
       Key key})
-      : this._color = color,
-        this._height = height,
+      : this._height = height,
         this._width = width,
-        this._index = index,
         _colorPicker = ColorPicker(sortColor: color, height: height),
-        assert(color != null),
+        assert(index != null),
         assert(height != null),
         assert(width != null),
-        assert(index != null),
+        assert(color != null),
         super(key: key);
 
   @override
@@ -33,18 +28,6 @@ class Bar extends StatelessWidget {
       width: _width,
       color: _colorPicker.color,
     );
-
     return bar;
-
-    // Todo: Although I had fixed it, I really liked your approach. So I'd like if you fix it by yourself
-
-    return CustomPaint(
-      painter: ArrayBar(
-        sortColor: _color,
-        width: _width,
-        height: _height,
-        index: _index,
-      ),
-    );
   }
 }
