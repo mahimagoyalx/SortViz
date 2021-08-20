@@ -1,0 +1,1354 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/material/colors.dart', 'packages/sortviz/service/sorting_service.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/material/icons.dart', 'packages/flutter/src/material/dropdown.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/sortviz/components/value_slider.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/icon_data.dart', 'packages/flutter/src/widgets/layout_builder.dart', 'packages/flutter/src/widgets/async.dart', 'packages/sortviz/components/bar.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/material/bottom_app_bar.dart'], (function load__packages__sortviz__view__home_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__material__colors$46dart, packages__sortviz__service__sorting_service$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__material__icons$46dart, packages__flutter__src__material__dropdown$46dart, packages__flutter__src__painting__strut_style$46dart, packages__sortviz__components__value_slider$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__icon_data$46dart, packages__flutter__src__widgets__layout_builder$46dart, packages__flutter__src__widgets__async$46dart, packages__sortviz__components__bar$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__material__bottom_app_bar$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const sorting_service = packages__sortviz__service__sorting_service$46dart.service__sorting_service;
+  const floating_action_button = packages__flutter__src__material__icon_button$46dart.src__material__floating_action_button;
+  const app_bar = packages__flutter__src__material__icon_button$46dart.src__material__app_bar;
+  const bottom_sheet = packages__flutter__src__material__icon_button$46dart.src__material__bottom_sheet;
+  const ink_well = packages__flutter__src__material__icon_button$46dart.src__material__ink_well;
+  const icon_button = packages__flutter__src__material__icon_button$46dart.src__material__icon_button;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const scaffold = packages__flutter__src__material__icon_button$46dart.src__material__scaffold;
+  const floating_action_button_location = packages__flutter__src__material__icon_button$46dart.src__material__floating_action_button_location;
+  const icon$ = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  const dropdown = packages__flutter__src__material__dropdown$46dart.src__material__dropdown;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const value_slider = packages__sortviz__components__value_slider$46dart.components__value_slider;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const icon_data = packages__flutter__src__widgets__icon_data$46dart.src__widgets__icon_data;
+  const layout_builder = packages__flutter__src__widgets__layout_builder$46dart.src__widgets__layout_builder;
+  const async = packages__flutter__src__widgets__async$46dart.src__widgets__async;
+  const bar = packages__sortviz__components__bar$46dart.components__bar;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const bottom_app_bar = packages__flutter__src__material__bottom_app_bar$46dart.src__material__bottom_app_bar;
+  var home = Object.create(dart.library);
+  var $modulo = dartx['%'];
+  var $_get = dartx._get;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $toDouble = dartx.toDouble;
+  var $round = dartx.round;
+  var $toInt = dartx.toInt;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))(),
+    JSArrayOfColorL: () => (T.JSArrayOfColorL = dart.constFn(_interceptors.JSArray$(T.ColorL())))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    SortL: () => (T.SortL = dart.constFn(dart.legacy(sorting_service.Sort)))(),
+    SortLTovoid: () => (T.SortLTovoid = dart.constFn(dart.fnType(dart.void, [T.SortL()])))(),
+    DropdownMenuItemOfSortL: () => (T.DropdownMenuItemOfSortL = dart.constFn(dropdown.DropdownMenuItem$(T.SortL())))(),
+    DropdownMenuItemLOfSortL: () => (T.DropdownMenuItemLOfSortL = dart.constFn(dart.legacy(T.DropdownMenuItemOfSortL())))(),
+    SortLToDropdownMenuItemLOfSortL: () => (T.SortLToDropdownMenuItemLOfSortL = dart.constFn(dart.fnType(T.DropdownMenuItemLOfSortL(), [T.SortL()])))(),
+    DropdownButtonOfSortL: () => (T.DropdownButtonOfSortL = dart.constFn(dropdown.DropdownButton$(T.SortL())))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    VoidToWidgetL: () => (T.VoidToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [])))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    doubleLTovoid: () => (T.doubleLTovoid = dart.constFn(dart.fnType(dart.void, [T.doubleL()])))(),
+    doubleLToLvoid: () => (T.doubleLToLvoid = dart.constFn(dart.legacy(T.doubleLTovoid())))(),
+    __ToWidgetL: () => (T.__ToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [], {onArraySizeChanged: T.doubleLToLvoid()}, {})))(),
+    __ToWidgetL$1: () => (T.__ToWidgetL$1 = dart.constFn(dart.fnType(T.WidgetL(), [], {onDurationChange: T.doubleLToLvoid()}, {})))(),
+    doubleLToNull: () => (T.doubleLToNull = dart.constFn(dart.fnType(core.Null, [T.doubleL()])))(),
+    ContainerL: () => (T.ContainerL = dart.constFn(dart.legacy(container.Container)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    VoidToLvoid: () => (T.VoidToLvoid = dart.constFn(dart.legacy(T.VoidTovoid())))(),
+    FnTovoid: () => (T.FnTovoid = dart.constFn(dart.fnType(dart.void, [T.VoidToLvoid()])))(),
+    FnToLvoid: () => (T.FnToLvoid = dart.constFn(dart.legacy(T.FnTovoid())))(),
+    BuildContextLAndFnToContainerL: () => (T.BuildContextLAndFnToContainerL = dart.constFn(dart.fnType(T.ContainerL(), [T.BuildContextL(), T.FnToLvoid()])))(),
+    StatefulBuilderL: () => (T.StatefulBuilderL = dart.constFn(dart.legacy(basic.StatefulBuilder)))(),
+    BuildContextLToStatefulBuilderL: () => (T.BuildContextLToStatefulBuilderL = dart.constFn(dart.fnType(T.StatefulBuilderL(), [T.BuildContextL()])))(),
+    IconDataL: () => (T.IconDataL = dart.constFn(dart.legacy(icon_data.IconData)))(),
+    __ToWidgetL$2: () => (T.__ToWidgetL$2 = dart.constFn(dart.fnType(T.WidgetL(), [], {icon: T.IconDataL(), onPressed: T.VoidToLvoid()}, {})))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    ListOfintL: () => (T.ListOfintL = dart.constFn(core.List$(T.intL())))(),
+    ListLOfintL: () => (T.ListLOfintL = dart.constFn(dart.legacy(T.ListOfintL())))(),
+    StreamBuilderOfListLOfintL: () => (T.StreamBuilderOfListLOfintL = dart.constFn(async.StreamBuilder$(T.ListLOfintL())))(),
+    BarL: () => (T.BarL = dart.constFn(dart.legacy(bar.Bar)))(),
+    ListOfBarL: () => (T.ListOfBarL = dart.constFn(core.List$(T.BarL())))(),
+    intLToBarL: () => (T.intLToBarL = dart.constFn(dart.fnType(T.BarL(), [T.intL()])))(),
+    AsyncSnapshotOfListLOfintL: () => (T.AsyncSnapshotOfListLOfintL = dart.constFn(async.AsyncSnapshot$(T.ListLOfintL())))(),
+    AsyncSnapshotLOfListLOfintL: () => (T.AsyncSnapshotLOfListLOfintL = dart.constFn(dart.legacy(T.AsyncSnapshotOfListLOfintL())))(),
+    BuildContextLAndAsyncSnapshotLOfListLOfintLToWidgetL: () => (T.BuildContextLAndAsyncSnapshotLOfListLOfintLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.AsyncSnapshotLOfListLOfintL()])))(),
+    StreamBuilderLOfListLOfintL: () => (T.StreamBuilderLOfListLOfintL = dart.constFn(dart.legacy(T.StreamBuilderOfListLOfintL())))(),
+    BoxConstraintsL: () => (T.BoxConstraintsL = dart.constFn(dart.legacy(box.BoxConstraints)))(),
+    BuildContextLAndBoxConstraintsLToStreamBuilderLOfListLOfintL: () => (T.BuildContextLAndBoxConstraintsLToStreamBuilderLOfListLOfintL = dart.constFn(dart.fnType(T.StreamBuilderLOfListLOfintL(), [T.BuildContextL(), T.BoxConstraintsL()])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 15,
+        [_Location_line]: 43,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 42,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 7,
+        [_Location_line]: 34,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 7,
+        [_Location_line]: 41,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 33,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 32,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 15,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 57,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 19,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 13,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19], T._LocationL());
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 66,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 11,
+        [_Location_line]: 66,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "iconSize",
+        [_Location_column]: 11,
+        [_Location_line]: 70,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onChanged",
+        [_Location_column]: 11,
+        [_Location_line]: 71,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "items",
+        [_Location_column]: 11,
+        [_Location_line]: 72,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.constList([C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25], T._LocationL());
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[21] || CT.C21,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 65,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 65,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.constList([C[28] || CT.C28], T._LocationL());
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[27] || CT.C27,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 64,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 80,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 81,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.constList([C[31] || CT.C31, C[32] || CT.C32], T._LocationL());
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[30] || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 79,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 7,
+        [_Location_line]: 78,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 7,
+        [_Location_line]: 79,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "actions",
+        [_Location_column]: 7,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37], T._LocationL());
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[34] || CT.C34,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 77,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 11,
+        [_Location_line]: 91,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 11,
+        [_Location_line]: 92,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "max",
+        [_Location_column]: 11,
+        [_Location_line]: 93,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "min",
+        [_Location_column]: 11,
+        [_Location_line]: 94,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onChanged",
+        [_Location_column]: 11,
+        [_Location_line]: 95,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 11,
+        [_Location_line]: 96,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42, C[43] || CT.C43, C[44] || CT.C44, C[45] || CT.C45], T._LocationL());
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[39] || CT.C39,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 90,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 11,
+        [_Location_line]: 101,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "param",
+        [_Location_column]: 11,
+        [_Location_line]: 102,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 11,
+        [_Location_line]: 103,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "max",
+        [_Location_column]: 11,
+        [_Location_line]: 104,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "min",
+        [_Location_column]: 11,
+        [_Location_line]: 105,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onChanged",
+        [_Location_column]: 11,
+        [_Location_line]: 106,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 11,
+        [_Location_line]: 107,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.constList([C[48] || CT.C48, C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51, C[52] || CT.C52, C[53] || CT.C53, C[54] || CT.C54], T._LocationL());
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[47] || CT.C47,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 100,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 19,
+        [_Location_line]: 118,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 19,
+        [_Location_line]: 119,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.constList([C[57] || CT.C57, C[58] || CT.C58], T._LocationL());
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[56] || CT.C56,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 117,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 117,
+        [_Location_file]: null
+      });
+    },
+    get C60() {
+      return C[60] = dart.constList([C[61] || CT.C61], T._LocationL());
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[60] || CT.C60,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 116,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 13,
+        [_Location_line]: 115,
+        [_Location_file]: null
+      });
+    },
+    get C63() {
+      return C[63] = dart.constList([C[64] || CT.C64], T._LocationL());
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[63] || CT.C63,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 114,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 23,
+        [_Location_line]: 151,
+        [_Location_file]: null
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 11,
+        [_Location_line]: 152,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.constList([C[67] || CT.C67, C[68] || CT.C68], T._LocationL());
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[66] || CT.C66,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 150,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 150,
+        [_Location_file]: null
+      });
+    },
+    get C70() {
+      return C[70] = dart.constList([C[71] || CT.C71], T._LocationL());
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[70] || CT.C70,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 149,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 7,
+        [_Location_line]: 144,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 149,
+        [_Location_file]: null
+      });
+    },
+    get C73() {
+      return C[73] = dart.constList([C[74] || CT.C74, C[75] || CT.C75], T._LocationL());
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[73] || CT.C73,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 143,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 8,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 8
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 15,
+        [_Location_line]: 168,
+        [_Location_file]: null
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 15,
+        [_Location_line]: 169,
+        [_Location_file]: null
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 15,
+        [_Location_line]: 170,
+        [_Location_file]: null
+      });
+    },
+    get C78() {
+      return C[78] = dart.constList([C[79] || CT.C79, C[80] || CT.C80, C[81] || CT.C81], T._LocationL());
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[78] || CT.C78,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 167,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 13,
+        [_Location_line]: 166,
+        [_Location_file]: null
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 13,
+        [_Location_line]: 167,
+        [_Location_file]: null
+      });
+    },
+    get C83() {
+      return C[83] = dart.constList([C[84] || CT.C84, C[85] || CT.C85], T._LocationL());
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[83] || CT.C83,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 165,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 11,
+        [_Location_line]: 164,
+        [_Location_file]: null
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 165,
+        [_Location_file]: null
+      });
+    },
+    get C87() {
+      return C[87] = dart.constList([C[88] || CT.C88, C[89] || CT.C89], T._LocationL());
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[87] || CT.C87,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 163,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C91() {
+      return C[91] = dart.constList([], T._LocationL());
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[91] || CT.C91,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 203,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "index",
+        [_Location_column]: 21,
+        [_Location_line]: 212,
+        [_Location_file]: null
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 21,
+        [_Location_line]: 213,
+        [_Location_file]: null
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 21,
+        [_Location_line]: 214,
+        [_Location_file]: null
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 21,
+        [_Location_line]: 215,
+        [_Location_file]: null
+      });
+    },
+    get C93() {
+      return C[93] = dart.constList([C[94] || CT.C94, C[95] || CT.C95, C[96] || CT.C96, C[97] || CT.C97], T._LocationL());
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[93] || CT.C93,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 211,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 19,
+        [_Location_line]: 220,
+        [_Location_file]: null
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 19,
+        [_Location_line]: 221,
+        [_Location_file]: null
+      });
+    },
+    get C99() {
+      return C[99] = dart.constList([C[100] || CT.C100, C[101] || CT.C101], T._LocationL());
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[99] || CT.C99,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 219,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "stream",
+        [_Location_column]: 15,
+        [_Location_line]: 200,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 15,
+        [_Location_line]: 201,
+        [_Location_file]: null
+      });
+    },
+    get C103() {
+      return C[103] = dart.constList([C[104] || CT.C104, C[105] || CT.C105], T._LocationL());
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[103] || CT.C103,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 199,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 11,
+        [_Location_line]: 191,
+        [_Location_file]: null
+      });
+    },
+    get C107() {
+      return C[107] = dart.constList([C[108] || CT.C108], T._LocationL());
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[107] || CT.C107,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 190,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C110() {
+      return C[110] = dart.constList([C[111] || CT.C111], T._LocationL());
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[110] || CT.C110,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 232,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 15,
+        [_Location_line]: 231,
+        [_Location_file]: null
+      });
+    },
+    get C113() {
+      return C[113] = dart.constList([C[114] || CT.C114], T._LocationL());
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[113] || CT.C113,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 230,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 13,
+        [_Location_line]: 229,
+        [_Location_file]: null
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 230,
+        [_Location_file]: null
+      });
+    },
+    get C116() {
+      return C[116] = dart.constList([C[117] || CT.C117, C[118] || CT.C118], T._LocationL());
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[116] || CT.C116,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 228,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 228,
+        [_Location_file]: null
+      });
+    },
+    get C120() {
+      return C[120] = dart.constList([C[121] || CT.C121], T._LocationL());
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[120] || CT.C120,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 227,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "floatingActionButton",
+        [_Location_column]: 9,
+        [_Location_line]: 187,
+        [_Location_file]: null
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "floatingActionButtonLocation",
+        [_Location_column]: 9,
+        [_Location_line]: 188,
+        [_Location_file]: null
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "appBar",
+        [_Location_column]: 9,
+        [_Location_line]: 189,
+        [_Location_file]: null
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "body",
+        [_Location_column]: 9,
+        [_Location_line]: 190,
+        [_Location_file]: null
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "bottomNavigationBar",
+        [_Location_column]: 9,
+        [_Location_line]: 227,
+        [_Location_file]: null
+      });
+    },
+    get C123() {
+      return C[123] = dart.constList([C[124] || CT.C124, C[125] || CT.C125, C[126] || CT.C126, C[127] || CT.C127, C[128] || CT.C128], T._LocationL());
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[123] || CT.C123,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 186,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 186,
+        [_Location_file]: null
+      });
+    },
+    get C130() {
+      return C[130] = dart.constList([C[131] || CT.C131], T._LocationL());
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[130] || CT.C130,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 185,
+        [_Location_file]: "file:///E:/GitHub/SortViz/lib/view/home.dart"
+      });
+    }
+  }, false);
+  var C = Array(132).fill(void 0);
+  var I = ["package:sortviz/view/home.dart"];
+  home.HomeScreen = class HomeScreen extends framework.StatefulWidget {
+    createState() {
+      return new home._HomeScreenState.new();
+    }
+  };
+  (home.HomeScreen.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    home.HomeScreen.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = home.HomeScreen.prototype;
+  dart.addTypeTests(home.HomeScreen);
+  dart.addTypeCaches(home.HomeScreen);
+  dart.setMethodSignature(home.HomeScreen, () => ({
+    __proto__: dart.getMethods(home.HomeScreen.__proto__),
+    createState: dart.fnType(dart.legacy(home._HomeScreenState), [])
+  }));
+  dart.setLibraryUri(home.HomeScreen, I[0]);
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  home._HomeScreenState = class _HomeScreenState extends framework.State$(dart.legacy(home.HomeScreen)) {
+    dispose() {
+      this.sortingService.dispose();
+      super.dispose();
+    }
+    build(context) {
+      let changeColorButton = new floating_action_button.FloatingActionButton.new({onPressed: dart.fn(() => {
+          let t0;
+          this.sortColor = this.colors[$_get]((t0 = this.c, this.c = dart.notNull(t0) + 1, t0)[$modulo](3));
+          this.setState(dart.fn(() => {
+          }, T.VoidToNull()));
+        }, T.VoidToNull()), backgroundColor: colors.Colors.white, child: new icon$.Icon.new(icons.Icons.format_color_fill, {color: this.sortColor, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+      const changeSort = sort => {
+        this.setState(dart.fn(() => {
+          this.sortingType = sort;
+        }, T.VoidToNull()));
+        this.sortingService.shuffle();
+      };
+      dart.fn(changeSort, T.SortLTovoid());
+      let sorts = sorting_service.Sort.values[$map](T.DropdownMenuItemLOfSortL(), dart.fn(sort => new (T.DropdownMenuItemOfSortL()).new({value: sort, child: new text.Text.new(sorting_service['SortExtension|get#name'](sort), {$creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}), T.SortLToDropdownMenuItemLOfSortL()))[$toList]();
+      function sortSelector() {
+        return new dropdown.DropdownButtonHideUnderline.new({child: new (T.DropdownButtonOfSortL()).new({icon: new icon$.Icon.new(icons.Icons.more_vert, {color: colors.Colors.white, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}), iconSize: 24.0, onChanged: changeSort, items: sorts, $creationLocationd_0dea112b090073317d4: C[20] || CT.C20}), $creationLocationd_0dea112b090073317d4: C[26] || CT.C26});
+      }
+      dart.fn(sortSelector, T.VoidToWidgetL());
+      let appBar = new app_bar.AppBar.new({elevation: 4.0, title: new text.Text.new("Sorting Visualiser", {style: new text_style.TextStyle.new({fontSize: 19.0}), $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), actions: T.JSArrayOfWidgetL().of([sortSelector()]), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33});
+      const arraySizeSlider = opts => {
+        let onArraySizeChanged = opts && 'onArraySizeChanged' in opts ? opts.onArraySizeChanged : null;
+        return new value_slider.ValueSlider.new({title: "Array Size", value: this.sortingService.size[$toDouble](), max: 500, min: 2, onChanged: onArraySizeChanged, backgroundColor: this.sortColor, $creationLocationd_0dea112b090073317d4: C[38] || CT.C38});
+      };
+      dart.fn(arraySizeSlider, T.__ToWidgetL());
+      const durationSlider = opts => {
+        let onDurationChange = opts && 'onDurationChange' in opts ? opts.onDurationChange : null;
+        return new value_slider.ValueSlider.new({title: "Duration", param: "ms", value: this.sortingService.duration[$toDouble](), max: 80, min: 0, onChanged: onDurationChange, backgroundColor: this.sortColor, $creationLocationd_0dea112b090073317d4: C[46] || CT.C46});
+      };
+      dart.fn(durationSlider, T.__ToWidgetL$1());
+      const showSettings = () => {
+        bottom_sheet.showModalBottomSheet(dart.dynamic, {context: context, builder: dart.fn(context => new basic.StatefulBuilder.new({builder: dart.fn((context, setState) => new container.Container.new({child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.spaceEvenly, children: T.JSArrayOfWidgetL().of([arraySizeSlider({onArraySizeChanged: dart.fn(value => {
+                      setState(dart.fn(() => {
+                        this.sortingService.size = value[$round]();
+                      }, T.VoidToNull()));
+                    }, T.doubleLToNull())}), durationSlider({onDurationChange: dart.fn(value => {
+                      setState(dart.fn(() => {
+                        this.sortingService.duration = value[$round]();
+                      }, T.VoidToNull()));
+                    }, T.doubleLToNull())})]), $creationLocationd_0dea112b090073317d4: C[55] || CT.C55}), $creationLocationd_0dea112b090073317d4: C[59] || CT.C59}), T.BuildContextLAndFnToContainerL()), $creationLocationd_0dea112b090073317d4: C[62] || CT.C62}), T.BuildContextLToStatefulBuilderL())});
+      };
+      dart.fn(showSettings, T.VoidTovoid());
+      let sortButton = new ink_well.InkWell.new({onTap: dart.fn(() => {
+          if (dart.test(this.sortingService.pause)) {
+            this.sortingService.sort(this.sortingType);
+          }
+        }, T.VoidToNull()), child: new basic.Center.new({child: new text.Text.new(sorting_service['SortExtension|get#name'](this.sortingType), {style: new text_style.TextStyle.new({color: colors.Colors.white, fontSize: 18.0, fontWeight: ui.FontWeight.w500}), $creationLocationd_0dea112b090073317d4: C[65] || CT.C65}), $creationLocationd_0dea112b090073317d4: C[69] || CT.C69}), $creationLocationd_0dea112b090073317d4: C[72] || CT.C72});
+      function iconButton(opts) {
+        let icon = opts && 'icon' in opts ? opts.icon : null;
+        let onPressed = opts && 'onPressed' in opts ? opts.onPressed : null;
+        return new basic.Padding.new({padding: C[76] || CT.C76, child: new icon_button.IconButton.new({onPressed: onPressed, icon: new icon$.Icon.new(icon, {size: 24.0, color: colors.Colors.white, $creationLocationd_0dea112b090073317d4: C[77] || CT.C77}), $creationLocationd_0dea112b090073317d4: C[82] || CT.C82}), $creationLocationd_0dea112b090073317d4: C[86] || CT.C86});
+      }
+      dart.fn(iconButton, T.__ToWidgetL$2());
+      let shuffleButton = iconButton({onPressed: dart.bind(this.sortingService, 'shuffle'), icon: icons.Icons.shuffle});
+      let settingsButton = iconButton({onPressed: showSettings, icon: icons.Icons.settings});
+      return new material.Material.new({child: new scaffold.Scaffold.new({floatingActionButton: changeColorButton, floatingActionButtonLocation: floating_action_button_location.FloatingActionButtonLocation.startFloat, appBar: appBar, body: new layout_builder.LayoutBuilder.new({builder: dart.fn((context, constrains) => {
+              this.sortingService.height = constrains.biggest.height[$toInt]();
+              if (this.height != constrains.biggest.height) {
+                this.height = constrains.biggest.height;
+                this.sortingService.shuffle();
+              }
+              return new (T.StreamBuilderOfListLOfintL()).new({stream: this.sortingService.stream, builder: dart.fn((context, snapshot) => {
+                  if (!dart.test(snapshot.hasData)) {
+                    return new container.Container.new({$creationLocationd_0dea112b090073317d4: C[90] || CT.C90});
+                  }
+                  let arr = snapshot.data;
+                  let barWidth = dart.notNull(constrains.biggest.width) / dart.notNull(this.sortingService.size);
+                  let bars = T.ListOfBarL().generate(this.sortingService.size, dart.fn(index => new bar.Bar.new({index: index, height: arr[$_get](index), width: barWidth, color: this.sortColor, $creationLocationd_0dea112b090073317d4: C[92] || CT.C92}), T.intLToBarL()))[$toList]();
+                  return new basic.Row.new({crossAxisAlignment: flex.CrossAxisAlignment.start, children: bars, $creationLocationd_0dea112b090073317d4: C[98] || CT.C98});
+                }, T.BuildContextLAndAsyncSnapshotLOfListLOfintLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[102] || CT.C102});
+            }, T.BuildContextLAndBoxConstraintsLToStreamBuilderLOfListLOfintL()), $creationLocationd_0dea112b090073317d4: C[106] || CT.C106}), bottomNavigationBar: new bottom_app_bar.BottomAppBar.new({child: new basic.SizedBox.new({height: appBar.preferredSize.height, child: new basic.Row.new({children: T.JSArrayOfWidgetL().of([new basic.Expanded.new({child: sortButton, $creationLocationd_0dea112b090073317d4: C[109] || CT.C109}), shuffleButton, settingsButton]), $creationLocationd_0dea112b090073317d4: C[112] || CT.C112}), $creationLocationd_0dea112b090073317d4: C[115] || CT.C115}), $creationLocationd_0dea112b090073317d4: C[119] || CT.C119}), $creationLocationd_0dea112b090073317d4: C[122] || CT.C122}), $creationLocationd_0dea112b090073317d4: C[129] || CT.C129});
+    }
+  };
+  (home._HomeScreenState.new = function() {
+    this.sortColor = colors.Colors.blue;
+    this.c = 0;
+    this.colors = T.JSArrayOfColorL().of([colors.Colors.pink, colors.Colors.teal, colors.Colors.blue]);
+    this.sortingService = new sorting_service.SortingService.new();
+    this.sortingType = sorting_service.Sort.MERGE_SORT;
+    this.height = -1.0;
+    home._HomeScreenState.__proto__.new.call(this);
+    ;
+  }).prototype = home._HomeScreenState.prototype;
+  dart.addTypeTests(home._HomeScreenState);
+  dart.addTypeCaches(home._HomeScreenState);
+  dart.setMethodSignature(home._HomeScreenState, () => ({
+    __proto__: dart.getMethods(home._HomeScreenState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(home._HomeScreenState, I[0]);
+  dart.setFieldSignature(home._HomeScreenState, () => ({
+    __proto__: dart.getFields(home._HomeScreenState.__proto__),
+    sortColor: dart.fieldType(dart.legacy(ui.Color)),
+    c: dart.fieldType(dart.legacy(core.int)),
+    colors: dart.fieldType(dart.legacy(core.List$(dart.legacy(ui.Color)))),
+    sortingService: dart.fieldType(dart.legacy(sorting_service.SortingService)),
+    sortingType: dart.fieldType(dart.legacy(sorting_service.Sort)),
+    height: dart.fieldType(dart.legacy(core.double))
+  }));
+  dart.defineLazy(home._HomeScreenState, {
+    /*home._HomeScreenState.MAX_DURATION*/get MAX_DURATION() {
+      return 80;
+    },
+    /*home._HomeScreenState.MIN_DURATION*/get MIN_DURATION() {
+      return 0;
+    },
+    /*home._HomeScreenState.MAX_ARRAY_SIZE*/get MAX_ARRAY_SIZE() {
+      return 500;
+    },
+    /*home._HomeScreenState.MIN_ARRAY_SIZE*/get MIN_ARRAY_SIZE() {
+      return 2;
+    }
+  }, true);
+  dart.trackLibraries("packages/sortviz/view/home.dart", {
+    "package:sortviz/view/home.dart": home
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["home.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AASoC;IAAkB;;;QAH9B;;AAAQ,mDAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;AAoBnB,MAAxB,AAAe;AACA,MAAT;IACR;UAG0B;AACjB,8BAAoB,gEACd;;AACkB,UAA3B,iBAAY,AAAM,mBAAK,CAAH,aAAD,4BAAC,gBAAK;AAGV,UAAf,cAAS;;6CAGa,4BACjB,mBACC,uCACC;AAIX,YAAK,aAAgB;AAGjB,QAFF,cAAS;AACW,UAAlB,mBAAc,IAAI;;AAGI,QAAxB,AAAe;;;AAGY,kBAAa,AACrC,AAIA,gEAJI,QAAC,QAAS,8CACF,IAAI,SACJ,kBAAU,0CAAL,IAAI;AAI1B,eAAO;AACL,cAAO,sDACE,2CACC,mBACE,+BACQ,0FAEN,iBACC,UAAU,SACd,KAAK;;;AAKX,mBAAS,mCACH,YACJ,kBACL,8BACO,wCACK,4EAGL,yBAAC,YAAY;AAGxB,YAAO;YACiC;AACpC,wDACS,qBACA,AAAe,AAAK,oEAGhB,kBAAkB,mBACZ;;;AAGvB,YAAO;YAA+C;AAClD,wDACS,mBACA,aACA,AAAe,AAAS,uEAGpB,gBAAgB,mBACV;;;AAGvB,YAAK;AA8BF,QA7BD,0DACW,OAAO,WACP,QAAC,WACD,wCACI,SAAC,SAAS,aACV,oCACE,yCACgC,8CAC3B,yBACR,eAAe,sBACO,QAAQ;AAGxB,sBAFF,AAAQ,QAAA,CAAC;AAC4B,wBAAnC,AAAe,2BAAO,AAAM,KAAD;;6CAIjC,cAAc,oBACM,QAAQ;AAGtB,sBAFF,AAAQ,QAAA,CAAC;AACgC,wBAAvC,AAAe,+BAAW,AAAM,KAAD;;;;;AAa9C,uBAAa,iCACX;AACL,wBAAI,AAAe;AACe,YAAhC,AAAe,yBAAK;;mCAGjB,6BACE,kBACO,0CAAZ,2BACO,qCACS,+BACJ,kBACa;AAM/B,eAAO;YACuD;YAA9B;AAC5B,uEAES,2CACM,SAAS,QACd,mBACJ,IAAI,SACE,aACQ;;;AAKjB,0BAAgB,UAAU,aACL,UAAf,uCACC;AAGP,2BAAiB,UAAU,aACrB,YAAY,QACX;AAGd,YAAO,mCACE,iDACiB,iBAAiB,gCACoB,iFACnD,MAAM,QACR,+CACK,SAAC,SAAS;AACwC,cAAzD,AAAe,6BAAS,AAAW,AAAQ,AAAO,UAAhB;AAElC,kBAAI,eAAU,AAAW,AAAQ,UAAT;AACY,gBAAlC,cAAS,AAAW,AAAQ,UAAT;AACK,gBAAxB,AAAe;;AAGjB,oBAAO,mDACG,AAAe,qCACd,SAAC,SAAS;AACjB,iCAAK,AAAS,QAAD;AACX,0BAAO;;AAGC,4BAAM,AAAS,QAAD;AACjB,iCACsB,aAAzB,AAAW,AAAQ,UAAT,+BAAiB,AAAe;AACjC,6BAAY,AAQvB,wBAPA,AAAe,0BACf,QAAC,SAAU,wBACF,KAAK,UACJ,AAAG,GAAA,QAAC,KAAK,UACV,QAAQ,SACR;AAIX,wBAAO,wCACkC,yCAC7B,IAAI;;oKAMH,4CACZ,gCACG,AAAO,AAAc,MAAf,8BACP,6BACK,yBACR,+BACS,UAAU,+DAEnB,aAAa,EACb,cAAc;IAO5B;;;IAjOM,iBAAmB;IACrB,SAAI;IACI,cAAS,wBAAQ,oBAAa,oBAAa;IACxC,sBAAiB;IAC3B,mBAAmB;IACjB,cAAS;;;EA6NlB;;;;;;;;;;;;;;;;;;MAtOsB,kCAAY;;;MACZ,kCAAY;;;MACZ,oCAAc;;;MACd,oCAAc","file":"../../../../packages/sortviz/view/home.dart.lib.js"}');
+  // Exports:
+  return {
+    view__home: home
+  };
+}));
+
+//# sourceMappingURL=home.dart.lib.js.map
