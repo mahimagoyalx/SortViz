@@ -1,1 +1,0 @@
- build\\web\\favicon.png build\\web\\icons\\Icon-192.png build\\web\\icons\\Icon-512.png build\\web\\index.html build\\web\\manifest.json:  E:\\GitHub\\SortViz\\web\\favicon.png E:\\GitHub\\SortViz\\web\\icons\\Icon-192.png E:\\GitHub\\SortViz\\web\\icons\\Icon-512.png E:\\GitHub\\SortViz\\web\\index.html E:\\GitHub\\SortViz\\web\\manifest.json
