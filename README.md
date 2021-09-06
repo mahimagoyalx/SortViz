@@ -8,7 +8,7 @@ A sorting visualizer that visualises different sorting algorithms on an array of
 
 **Checkout the web app [here](https://mahimagoyalx.github.io/SortViz/#/)**
 
-**Download the mobile app from [here](https://drive.google.com/drive/folders/1PfN_Md6U7O-86t2zEeEWL4K3C6OY38xX?usp=sharing)**
+**Download the mobile app from [here](https://github.com/mahimagoyalx/SortViz/releases/download/v1.0.0/app-release.apk)**
 
 **Tech Stack:** Flutter, Dart
 
