@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sortviz/components/bar.dart';
 import 'package:sortviz/components/value_slider.dart';
 import 'package:sortviz/service/sorting_service.dart';
@@ -11,16 +12,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const double MAX_DURATION = 80;
+  static const double MAX_DURATION = 100;
   static const double MIN_DURATION = 0;
-  static const double MAX_ARRAY_SIZE = 500;
-  static const double MIN_ARRAY_SIZE = 2;
+  static const int MAX_ARRAY_SIZE = 100;
+  static const int MIN_ARRAY_SIZE = 2;
   Color sortColor = Colors.blue;
   int c = 0;
   List<Color> colors = [Colors.pink, Colors.teal, Colors.blue];
   SortingService sortingService = SortingService();
   Sort sortingType = Sort.MERGE_SORT;
   double height = -1;
+  String dropval = "Merge Sort";
 
   @override
   void dispose() {
@@ -33,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget changeColorButton = FloatingActionButton(
       onPressed: () {
         sortColor = colors[c++ % 3];
-
         // if (sortingService.pause) {
         setState(() {});
         // }
@@ -45,42 +46,80 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    void changeSort(Sort sort) {
+    void changeSort(String val) {
       setState(() {
-        sortingType = sort;
+        dropval = val;
+        Sort.values.forEach((element) {
+          if (element.name == val) {
+            sortingType = element;
+          }
+        });
       });
-
       sortingService.shuffle();
     }
 
-    List<DropdownMenuItem<Sort>> sorts = Sort.values
-        .map((sort) => DropdownMenuItem<Sort>(
-              value: sort,
-              child: Text(sort.name),
-            ))
-        .toList();
+    final List<String> sortingtypes = [
+      'Merge Sort',
+      'Quick Sort',
+      'Selection Sort',
+      'Bubble Sort',
+      'Insertion Sort',
+      'Heap Sort'
+    ];
 
     Widget sortSelector() {
-      return DropdownButtonHideUnderline(
-        child: DropdownButton(
-          icon: Icon(
-            Icons.more_vert,
-            color: Colors.white,
-          ),
-          iconSize: 24,
-          onChanged: changeSort,
-          items: sorts,
-        ),
-      );
+      return Flexible(
+          fit: FlexFit.loose,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+              selectedItemBuilder: (_) {
+                return sortingtypes
+                    .map((e) => Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            e,
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                        ))
+                    .toList();
+              },
+              hint: Text("Change Algo"),
+              value: dropval,
+              icon: const Icon(
+                Icons.arrow_drop_down,
+                color: Colors.white,
+              ),
+              iconSize: 30,
+              elevation: 16,
+              style: TextStyle(color: Colors.white, fontSize: 16.5),
+              onChanged: changeSort,
+              items: sortingtypes.map((String v) {
+                return new DropdownMenuItem<String>(
+                  value: v,
+                  child: new Text(
+                    v,
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              }).toList(),
+            )),
+          ));
     }
 
     AppBar appBar = AppBar(
+      backgroundColor: Color(0xFF202124),
+      brightness: Brightness.dark,
       elevation: 4,
       title: Text(
         "Sorting Visualiser",
-        style: TextStyle(
-          fontSize: 19.0,
-        ),
+        style: TextStyle(fontSize: 18.5, fontWeight: FontWeight.w500),
+        textAlign: TextAlign.center,
       ),
       actions: [sortSelector()],
     );
@@ -90,8 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ValueSlider(
           title: "Array Size",
           value: sortingService.size.toDouble(),
-          max: MAX_ARRAY_SIZE,
-          min: MIN_ARRAY_SIZE,
+          max: MAX_ARRAY_SIZE.toDouble(),
+          min: MIN_ARRAY_SIZE.toDouble(),
           onChanged: onArraySizeChanged,
           backgroundColor: sortColor,
         );

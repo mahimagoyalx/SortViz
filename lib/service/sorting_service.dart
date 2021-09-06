@@ -24,7 +24,7 @@ extension SortExtension on Sort {
 
 class SortingService {
   bool _pause = true;
-  int _size = 100;
+  int _size = 50;
   int _height;
   int duration = 40;
   final List<int> arr = [];
