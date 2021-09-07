@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ValueSlider extends StatelessWidget {
   final String _title;
-  final String _param;
+  final String? _param;
   final double _value;
   final double _max;
   final double _min;
@@ -10,14 +10,14 @@ class ValueSlider extends StatelessWidget {
   final Color _backgroundColor;
 
   const ValueSlider({
-    @required String title,
-    String param,
-    @required double value,
-    @required double max,
-    @required double min,
-    @required ValueChanged<double> onChanged,
-    @required Color backgroundColor,
-    Key key,
+    required String title,
+    String? param,
+    required double value,
+    required double max,
+    required double min,
+    required ValueChanged<double> onChanged,
+    required Color backgroundColor,
+    Key? key,
   })  : this._title = title,
         this._param = param,
         this._value = value,
@@ -69,7 +69,7 @@ class ValueSlider extends StatelessWidget {
                     ),
                     _param != null
                         ? Text(
-                            " " + _param,
+                            " " + _param!,
                             style: TextStyle(
                               fontSize: 24,
                               color: Colors.white,

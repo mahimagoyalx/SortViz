@@ -7,7 +7,7 @@ class ColorPicker {
   final Color _sortColor;
   final int _height;
 
-  ColorPicker({@required Color sortColor, @required int height})
+  ColorPicker({required Color sortColor, required int height})
       : this._sortColor = sortColor,
         this._height = height,
         assert(sortColor != null),

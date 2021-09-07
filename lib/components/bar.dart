@@ -7,11 +7,11 @@ class Bar extends StatelessWidget {
   final ColorPicker _colorPicker;
 
   Bar(
-      {@required int index,
-      @required int height,
-      @required double width,
-      @required Color color,
-      Key key})
+      {required int index,
+      required int height,
+      required double width,
+      required Color color,
+      Key? key})
       : this._height = height,
         this._width = width,
         _colorPicker = ColorPicker(sortColor: color, height: height),

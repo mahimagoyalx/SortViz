@@ -25,13 +25,13 @@ extension SortExtension on Sort {
 class SortingService {
   bool _pause = true;
   int _size = 50;
-  int _height;
+  late int _height;
   int duration = 40;
-  final List<int> arr = [];
-  final StreamController<List<int>> _streamController =
-      StreamController<List<int>>();
+  final List<int?> arr = [];
+  final StreamController<List<int?>> _streamController =
+      StreamController<List<int?>>();
 
-  Stream<List<int>> get stream => _streamController.stream;
+  Stream<List<int?>> get stream => _streamController.stream;
 
   bool get pause => _pause;
 
@@ -95,8 +95,8 @@ class SortingService {
   bubbleSort() async {
     for (int i = 0; i < arr.length; ++i) {
       for (int j = 0; j < arr.length - i - 1; ++j) {
-        if (arr[j] > arr[j + 1]) {
-          int temp = arr[j];
+        if (arr[j]! > arr[j + 1]!) {
+          int? temp = arr[j];
           arr[j] = arr[j + 1];
           arr[j + 1] = temp;
         }
@@ -115,8 +115,8 @@ class SortingService {
   selectionSort() async {
     for (int i = 0; i < arr.length; i++) {
       for (int j = i + 1; j < arr.length; j++) {
-        if (arr[i] > arr[j]) {
-          int temp = arr[j];
+        if (arr[i]! > arr[j]!) {
+          int? temp = arr[j];
           arr[j] = arr[i];
           arr[i] = temp;
         }
@@ -134,10 +134,10 @@ class SortingService {
   /// Insertion Sort
   insertionSort() async {
     for (int i = 1; i < arr.length; i++) {
-      int temp = arr[i];
+      int? temp = arr[i];
       int j = i - 1;
 
-      while (j >= 0 && temp < arr[j]) {
+      while (j >= 0 && temp! < arr[j]!) {
         arr[j + 1] = arr[j];
         --j;
 
@@ -166,8 +166,8 @@ class SortingService {
       int leftSize = middleIndex - leftIndex + 1;
       int rightSize = rightIndex - middleIndex;
 
-      List<int> leftList = List.generate(leftSize, (index) => null);
-      List<int> rightList = List.generate(rightSize, (index) => null);
+      List<int?> leftList = List.generate(leftSize, (index) => null);
+      List<int?> rightList = List.generate(rightSize, (index) => null);
 
       for (int i = 0; i < leftSize; i++) {
         leftList[i] = arr[leftIndex + i];
@@ -181,7 +181,7 @@ class SortingService {
       int k = leftIndex;
 
       while (i < leftSize && j < rightSize) {
-        if (leftList[i] <= rightList[j]) {
+        if (leftList[i]! <= rightList[j]!) {
           arr[k] = leftList[i];
           i++;
         } else {
@@ -265,7 +265,7 @@ class SortingService {
       int cursor = left;
 
       for (int i = left; i < right; i++) {
-        if (cf(arr[i], arr[right]) <= 0) {
+        if (cf(arr[i]!, arr[right]!) <= 0) {
           var temp = arr[i];
           arr[i] = arr[cursor];
           arr[cursor] = temp;
@@ -326,7 +326,7 @@ class SortingService {
     }
 
     for (int i = arr.length - 1; i >= 0; i--) {
-      int temp = arr[0];
+      int? temp = arr[0];
       arr[0] = arr[i];
       arr[i] = temp;
 
@@ -338,21 +338,21 @@ class SortingService {
     }
   }
 
-  heapify(List<int> arr, int n, int i) async {
+  heapify(List<int?> arr, int n, int i) async {
     int largest = i;
     int l = 2 * i + 1;
     int r = 2 * i + 2;
 
-    if (l < n && arr[l] > arr[largest]) {
+    if (l < n && arr[l]! > arr[largest]!) {
       largest = l;
     }
 
-    if (r < n && arr[r] > arr[largest]) {
+    if (r < n && arr[r]! > arr[largest]!) {
       largest = r;
     }
 
     if (largest != i) {
-      int temp = arr[i];
+      int? temp = arr[i];
       arr[i] = arr[largest];
       arr[largest] = temp;
       heapify(arr, n, largest);

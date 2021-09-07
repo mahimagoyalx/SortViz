@@ -5,7 +5,7 @@ import 'package:sortviz/components/value_slider.dart';
 import 'package:sortviz/service/sorting_service.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   SortingService sortingService = SortingService();
   Sort sortingType = Sort.MERGE_SORT;
   double height = -1;
-  String dropval = "Merge Sort";
+  String? dropval = "Merge Sort";
 
   @override
   void dispose() {
@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    void changeSort(String val) {
+    void changeSort(String? val) {
       setState(() {
         dropval = val;
         Sort.values.forEach((element) {
@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     Widget arraySizeSlider(
-            {@required ValueChanged<double> onArraySizeChanged}) =>
+            {required ValueChanged<double> onArraySizeChanged}) =>
         ValueSlider(
           title: "Array Size",
           value: sortingService.size.toDouble(),
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: sortColor,
         );
 
-    Widget durationSlider({@required ValueChanged<double> onDurationChange}) =>
+    Widget durationSlider({required ValueChanged<double> onDurationChange}) =>
         ValueSlider(
           title: "Duration",
           param: "ms",
@@ -198,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     Widget iconButton(
-            {@required VoidCallback onPressed, @required IconData icon}) =>
+            {required VoidCallback onPressed, required IconData icon}) =>
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: IconButton(
@@ -235,21 +235,21 @@ class _HomeScreenState extends State<HomeScreen> {
               sortingService.shuffle();
             }
 
-            return StreamBuilder<List<int>>(
+            return StreamBuilder<List<int?>>(
               stream: sortingService.stream,
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Container();
                 }
 
-                List<int> arr = snapshot.data;
+                List<int?>? arr = snapshot.data;
                 double barWidth =
                     constrains.biggest.width / sortingService.size;
                 List<Widget> bars = List.generate(
                   sortingService.size,
                   (index) => Bar(
                     index: index,
-                    height: arr[index],
+                    height: arr![index]!,
                     width: barWidth,
                     color: sortColor,
                   ),
